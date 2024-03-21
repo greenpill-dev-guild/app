@@ -14,11 +14,11 @@ const _strategyContractDetails: any = strategyContractDetails();
 export const alloContract = getContract({
   address: _alloContractDetails[networkId]?.proxy,
   abi: _alloContractDetails[networkId]?.abi,
-  publicClient: ViemClient,
+  client: ViemClient,
 });
 
 export const strategyContract = getContract({
   address: _strategyContractDetails[networkId]?.address,
   abi: _strategyContractDetails[networkId]?.abi,
-  publicClient: ViemClient,
+  client: ViemClient,
 });

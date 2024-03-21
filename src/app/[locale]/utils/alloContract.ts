@@ -26,7 +26,7 @@ export function getAllo() {
  * @returns Promise<`0x${string}`>
  */
 export async function getStrategy(poolId: number): Promise<`0x${string}`> {
-  const data = await alloContract.read.getStrategy([poolId]);
+  const data: any = await alloContract.read.getStrategy([poolId]);
 
   return `0x${data.toString()}`;
 }
@@ -105,6 +105,7 @@ async function isValidAllocator(allocatorId: string): Promise<boolean> {
  */
 export async function getMaxVoiceCreditsPerAllocator() {
   const maxVoiceCredits = Number(
+    // @ts-ignore
     (await strategyContract.read.maxVoiceCreditsPerAllocator([])).toString()
   );
 
