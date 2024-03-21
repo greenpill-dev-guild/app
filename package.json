@@ -1,5 +1,5 @@
 {
-  "name": "impact-stream-pwa",
+  "name": "greenpill-community-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,9 +15,10 @@
     "@headlessui/react": "1.7.17",
     "@heroicons/react": "^2.0.18",
     "@hookform/resolvers": "^3.1.1",
-    "@privy-io/react-auth": "^1.43.2",
-    "@privy-io/wagmi-connector": "^0.1.4",
+    "@privy-io/react-auth": "^1.59.5",
+    "@privy-io/wagmi-connector": "^0.1.13",
     "@supabase/supabase-js": "^2.26.0",
+    "@web3-storage/w3up-client": "12.4.1",
     "clipboard-copy": "^4.0.1",
     "cookies-next": "^2.1.2",
     "jose": "^4.14.4",
@@ -28,10 +29,10 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.1",
     "react-tailwindcss-select": "^1.8.5",
-    "viem": "^1.16.3",
-    "wagmi": "^1.4.3",
-    "web3.storage": "^4.5.4",
-    "yup": "^1.2.0"
+    "viem": "^2.8.16",
+    "wagmi": "1.4.13",
+    "web3.storage": "^4.5.5",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.2.25",
