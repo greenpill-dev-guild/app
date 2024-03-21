@@ -1,9 +1,10 @@
 "use client";
 import React, { useState, useEffect, useContext } from "react";
+
 import { IAllocationParams, ICartContextProps } from "../types";
 
 export const CartContext = React.createContext<ICartContextProps | undefined>(
-  undefined,
+  undefined
 );
 
 export const CartContextProvider = ({ children }: { children: any }) => {
@@ -32,7 +33,7 @@ export const CartContextProvider = ({ children }: { children: any }) => {
   const deleteItemFromCart = (itemId: string): void => {
     setCartItems((prevCartItems) => {
       const updatedCartItems = prevCartItems.filter(
-        (cartItem) => cartItem !== itemId,
+        (cartItem) => cartItem !== itemId
       );
       localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
       return updatedCartItems;

@@ -1,9 +1,10 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { TSummaryProposal } from "../types";
+
 import { getSupabaseClient } from "../../../lib/supabase";
 import useCheckTokens from "../[locale]/hooks/useCheckTokens";
+import { TSummaryProposal } from "../types";
 
 export const ProposalContext = createContext({
   proposals: [] as TSummaryProposal[],
@@ -19,7 +20,7 @@ export const ProposalsProvider = ({ children }: { children: any[] }) => {
   async function fetchProposals() {
     const supabase = await getSupabaseClient();
     const { data, error } = await supabase.rpc(
-      "get_proposals_with_collaborators",
+      "get_proposals_with_collaborators"
     );
 
     if (data) setProposals(data);
@@ -32,7 +33,7 @@ export const ProposalsProvider = ({ children }: { children: any[] }) => {
     const supabase = await getSupabaseClient();
     const { data, error } = await supabase.rpc(
       "get_proposal_with_collaborators",
-      { proposal_id: proposalId },
+      { proposal_id: proposalId }
     );
 
     if (data) console.log("proposal", data[0]);
@@ -63,7 +64,7 @@ export const useProposalContext = () => {
   const context = useContext(ProposalContext);
   if (context === undefined)
     throw new Error(
-      `useProposalContext must be used within a ProposalContextProvider`,
+      `useProposalContext must be used within a ProposalContextProvider`
     );
 
   return context;

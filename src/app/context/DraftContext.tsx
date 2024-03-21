@@ -1,5 +1,6 @@
 "use client";
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from "react";
+
 import { getSupabaseClient } from "../../../lib/supabase";
 import useCheckTokens from "../[locale]/hooks/useCheckTokens";
 import { TDraftProposal } from "../types";
@@ -38,4 +39,4 @@ export const DraftProvider = ({ children }: { children: any }) => {
       {children}
     </DraftContext.Provider>
   );
-}
+};
