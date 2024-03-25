@@ -1,11 +1,11 @@
 "use client";
 
 import { configureChains } from "wagmi";
+import { PrivyProvider } from "@privy-io/react-auth";
+import { optimism, optimismSepolia } from "viem/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
-import { PrivyProvider } from "@privy-io/react-auth";
 import { PrivyWagmiConnector } from "@privy-io/wagmi-connector";
-import { celo, optimism, optimismSepolia } from "viem/chains";
 
 const configureChainsConfig = configureChains(
   [optimism, optimismSepolia],

@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { usePrivy } from "@privy-io/react-auth";
-import { useRouter } from "next/navigation";
-import { getSupabaseClient } from "../../../../lib/supabase";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import { usePrivy } from "@privy-io/react-auth";
+import React, { useState, useEffect } from "react";
+
+import { getSupabaseClient } from "../../../lib/supabase";
 
 const supabaseAuth = async (address: string, userId: string) => {
   await fetch("/api/auth/login", {

@@ -1,17 +1,13 @@
 "use client";
 
-import { useCart } from "@/app/context/CartContext";
-import {
-  Bars3Icon,
-  XMarkIcon
-} from "@heroicons/react/24/outline";
-import { usePrivy } from "@privy-io/react-auth";
-import { useTranslations } from "next-intl";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { strategyContract } from "../utils/contracts";
+import { usePrivy } from "@privy-io/react-auth";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+
 import NavbarLink from "./NavbarLink";
 
 export const Navbar = () => {
@@ -20,23 +16,22 @@ export const Navbar = () => {
   const [isValidAllocator, setIsValidAllocator] = useState(false);
   const t = useTranslations("Navigation");
   const router = useRouter();
-  const context = useCart();
 
-  useEffect(() => {
-    const getAllocator = async () => {
-      const isValid: any = await strategyContract.read.isValidAllocator([
-        user?.wallet?.address!,
-      ]);
+  // useEffect(() => {
+  //   const getAllocator = async () => {
+  //     const isValid: any = await strategyContract.read.isValidAllocator([
+  //       user?.wallet?.address!,
+  //     ]);
 
-      console.log("isValid2", isValid);
+  //     console.log("isValid2", isValid);
 
-      if (isValid as boolean === true) {
-        setIsValidAllocator(true);
-      }
-    };
+  //     if (isValid as boolean === true) {
+  //       setIsValidAllocator(true);
+  //     }
+  //   };
 
-    getAllocator();
-  }), [user?.wallet?.address];
+  //   getAllocator();
+  // }), [user?.wallet?.address];
 
   return (
     <div className="fixed top-0 left-0 right-0 bg-white p-8 pb-4 z-50">
@@ -101,11 +96,11 @@ export const Navbar = () => {
             router.push(`/cart`);
           }}
         >
-          {context.cartItems.length > 0 && (
+          {/* {context.cartItems.length > 0 && (
             <div className="text-xs bg-blue-600 font-bold rounded-full absolute right-16 z-10 block h-5 leading-5 w-5 text-center text-white top-9">
               {context.cartItems.length}
             </div>
-          )}
+          )} */}
 
           <span className="h-8 absolute right-20 top-11">📥</span>
         </div>

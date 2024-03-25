@@ -6,7 +6,7 @@ import {
   showMessage,
   showLink,
   makeGatewayURL,
-} from "@/app/gallery-utils";
+} from "@/app/utils/gallery";
 
 // We use this to identify our uploads in the client.list response.
 const namePrefix = "ImageGallery";

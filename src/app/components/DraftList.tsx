@@ -1,4 +1,4 @@
-import { IDraftListProps } from "@/app/types";
+import { IDraftListProps } from "@/app/types/app";
 import { useRouter } from "next/navigation";
 
 export const DraftList = ({ drafts }: IDraftListProps) => {
