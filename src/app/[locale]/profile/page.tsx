@@ -3,10 +3,9 @@ import React, { useState, useEffect } from "react";
 import { usePrivy } from "@privy-io/react-auth";
 import { useRouter } from "next/navigation";
 import { getSupabaseClient, logoutSupabase } from "../../../../lib/supabase";
-import { TUser } from "@/app/types";
+import { TUser } from "@/app/types/app";
 import { useTranslations } from "next-intl";
-import useCheckTokens from "../hooks/useCheckTokens";
-import { shortenAddress } from "@/app/utils";
+import useCheckTokens from "../../hooks/useCheckTokens";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
 export default function Settings() {
@@ -92,25 +91,30 @@ export default function Settings() {
           <FormProvider {...methods}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="sm:col-span-4 mt-2">
-                <label htmlFor="address" className="block text-sm font-medium leading-6 text-gray-900">
+                <label
+                  htmlFor="address"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
                   Address
                 </label>
-                <p className="text-sm">
-                  {currentUser.address!}
-                </p>
+                <p className="text-sm">{currentUser.address!}</p>
               </div>
 
               <div className="sm:col-span-4 mt-2">
-                <label htmlFor="phone" className="block text-sm font-medium leading-6 text-gray-900">
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
                   Phone
                 </label>
-                <p>
-                  {currentUser.phone_number!}
-                </p>
+                <p>{currentUser.phone_number!}</p>
               </div>
 
               <div className="sm:col-span-4 mt-2">
-                <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
                   Name
                 </label>
                 <div className="mt-2">
@@ -119,7 +123,7 @@ export default function Settings() {
                       type="text"
                       id="name"
                       required
-                      {...register('name', { value : currentUser.name! })}
+                      {...register("name", { value: currentUser.name! })}
                       className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -127,14 +131,19 @@ export default function Settings() {
               </div>
 
               <div className="sm:col-span-4 mt-2">
-                <label htmlFor="family_name" className="block text-sm font-medium leading-6 text-gray-900">
+                <label
+                  htmlFor="family_name"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
                   Family Name
                 </label>
                 <div className="mt-2">
                   <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                     <input
                       type="text"
-                      {...register('family_name', { value : currentUser.family_name! })}
+                      {...register("family_name", {
+                        value: currentUser.family_name!,
+                      })}
                       id="family_name"
                       required
                       className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
@@ -144,14 +153,19 @@ export default function Settings() {
               </div>
 
               <div className="sm:col-span-4 mt-2">
-                <label htmlFor="village_neighborhood" className="block text-sm font-medium leading-6 text-gray-900">
+                <label
+                  htmlFor="village_neighborhood"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
                   Village Neighborhood
                 </label>
                 <div className="mt-2">
                   <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                     <input
                       type="text"
-                      {...register('village_neighborhood', { value : currentUser.village_neighborhood! })}
+                      {...register("village_neighborhood", {
+                        value: currentUser.village_neighborhood!,
+                      })}
                       id="village_neighborhood"
                       required
                       className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
@@ -161,14 +175,17 @@ export default function Settings() {
               </div>
 
               <div className="sm:col-span-4 mt-2">
-                <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
                   Email
                 </label>
                 <div className="mt-2">
                   <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                     <input
                       type="text"
-                      {...register('email', { value : currentUser.email! })}
+                      {...register("email", { value: currentUser.email! })}
                       id="email"
                       required
                       className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
@@ -179,8 +196,7 @@ export default function Settings() {
 
               <button className="w-full border border-slate-400 rounded leading-10 font-bold mt-5">
                 Update Profile
-                {
-                  isSubmitting ||
+                {isSubmitting ||
                   (isSubmitted && (
                     <svg
                       aria-hidden="true"
@@ -198,8 +214,7 @@ export default function Settings() {
                         fill="currentFill"
                       />
                     </svg>
-                  ))
-                }
+                  ))}
               </button>
             </form>
           </FormProvider>
