@@ -1,18 +1,20 @@
 "use client";
 
-import React, { useState, useEffect, useContext } from "react";
-import { usePrivy } from "@privy-io/react-auth";
-import { PencilSquareIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 import {
   MapPinIcon,
   UserCircleIcon,
   UserGroupIcon,
 } from "@heroicons/react/24/outline";
-import { TFullProposal, TMilestone } from "@/app/types";
 import { useTranslations } from "next-intl";
-import { EditProposalForm } from "../components/EditProposalForm";
-import Link from "next/link";
+import { usePrivy } from "@privy-io/react-auth";
+import React, { useState, useEffect, useContext } from "react";
+import { PencilSquareIcon } from "@heroicons/react/24/outline";
+
+import { TFullProposal, TMilestone } from "@/app/types";
 import { ProposalContext } from "@/app/context/ProposalContext";
+
+import { EditProposalForm } from "../components/EditProposalForm";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const { user } = usePrivy();

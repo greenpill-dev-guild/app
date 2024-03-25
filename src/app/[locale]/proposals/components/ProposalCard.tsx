@@ -1,24 +1,22 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { truncateDescription } from "@/app/utils";
 import {
   CheckBadgeIcon,
   EyeIcon,
   MapPinIcon,
 } from "@heroicons/react/24/outline";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { IProposalCardProps, TSummaryProposal } from "@/app/types";
-import AddRemoveCartButton from "../../cart/components/AddRemoveCartButton";
-import { getVoiceCreditsCastByAllocatorToRecipient } from "../../utils/alloContract";
 import { usePrivy } from "@privy-io/react-auth";
-import { strategyContract } from "../../utils/contracts";
+
+import { IProposalCardProps } from "@/app/types";
+import { truncateDescription } from "@/app/utils/text";
 
 const ProposalCard = ({
   proposal,
   showStatus,
-  showAction = false,
-  showAllocation,
+  // showAction = false,
+  // showAllocation,
 }: IProposalCardProps) => {
   const router = useRouter();
   const { user } = usePrivy();
@@ -26,34 +24,35 @@ const ProposalCard = ({
   const [votesCastedToRecipient, setVotesCastedToRecipient] =
     useState<number>(0);
 
-  useEffect(() => {
-    const load = async () => {
-      setVotesCastedToRecipient(
-        await getVoiceCreditsCastByAllocatorToRecipient(
-          user?.wallet?.address!,
-          proposal.allo_recipient_id!
-        )
-      );
-    };
-    load();
-  }, [proposal.allo_recipient_id, user?.wallet?.address]);
+  // useEffect(() => {
+  //   const load = async () => {
+  //     setVotesCastedToRecipient(
+  //       await getVoiceCreditsCastByAllocatorToRecipient(
+  //         user?.wallet?.address!,
+  //         proposal.allo_recipient_id!
+  //       )
+  //     );
+  //   };
 
-  useEffect(() => {
-    const getAllocator = async () => {
-      const isValid: any = await strategyContract.read.isValidAllocator([
-        user?.wallet?.address!,
-      ]);
+  //   load();
+  // }, [proposal.allo_recipient_id, user?.wallet?.address]);
 
-      console.log("isValid2", isValid);
+  // useEffect(() => {
+  //   const getAllocator = async () => {
+  //     const isValid: any = await strategyContract.read.isValidAllocator([
+  //       user?.wallet?.address!,
+  //     ]);
 
-      if (isValid as boolean === true) {
-        setIsValidAllocator(true);
-      }
-    };
+  //     console.log("isValid2", isValid);
 
-    getAllocator();
-  }), [user?.wallet?.address];
-  
+  //     if (isValid as boolean === true) {
+  //       setIsValidAllocator(true);
+  //     }
+  //   };
+
+  //   getAllocator();
+  // }), [user?.wallet?.address];
+
   if (!user) return null;
 
   return (
@@ -82,11 +81,11 @@ const ProposalCard = ({
             </div>
           )}
 
-          {isValidAllocator && (
+          {/* {isValidAllocator && (
             <div className="ml-auto">
               {showAction && <AddRemoveCartButton grantId={proposal.id} />}
             </div>
-          )}
+          )} */}
         </div>
 
         <span className="text-sm">

@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 import { getSupabaseClient } from "../../../lib/supabase";
-import useCheckTokens from "../[locale]/hooks/useCheckTokens";
+import useCheckTokens from "../hooks/useCheckTokens";
 import { TSummaryProposal } from "../types";
 
 export const ProposalContext = createContext({

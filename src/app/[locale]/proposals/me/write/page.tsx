@@ -1,20 +1,22 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import Select from "react-tailwindcss-select";
-import { MilestoneForm } from "../../../components/MilestoneForm";
 import "react-tailwindcss-select/dist/index.css";
-import { SelectValue } from "react-tailwindcss-select/dist/components/type";
+
+import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import Select from "react-tailwindcss-select";
+import { usePrivy } from "@privy-io/react-auth";
+import React, { useState, useEffect } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
-import { usePrivy } from "@privy-io/react-auth";
+import { SelectValue } from "react-tailwindcss-select/dist/components/type";
+
 import {
   getSupabaseClient,
   logoutSupabase,
 } from "../../../../../../lib/supabase";
-import { useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
 import { TUser, TCreateProposal } from "@/app/types";
-import useCheckTokens from "../../../hooks/useCheckTokens";
+import useCheckTokens from "../../../../hooks/useCheckTokens";
+import { MilestoneForm } from "../../../../components/MilestoneForm";
 
 interface UserOption {
   id: string;
@@ -285,7 +287,9 @@ export default function WriteProposal() {
               {" "}
               {errors.affected_locations && errors.affected_locations.message}
             </span>
-            <label className="text-sm">{t("locationsAffectedPlaceholder")}</label>
+            <label className="text-sm">
+              {t("locationsAffectedPlaceholder")}
+            </label>
             <input
               className={inputClasses}
               placeholder={t("locationsAffectedPlaceholder")}
@@ -306,7 +310,9 @@ export default function WriteProposal() {
               {" "}
               {errors.community_problem && errors.community_problem.message}
             </span>
-            <label className="text-sm">{t("communityProblemPlaceholder")}</label>
+            <label className="text-sm">
+              {t("communityProblemPlaceholder")}
+            </label>
             <textarea
               className={textareaClasses}
               placeholder={t("communityProblemPlaceholder")}
@@ -327,7 +333,9 @@ export default function WriteProposal() {
               {" "}
               {errors.proposed_solution && errors.proposed_solution.message}
             </span>
-            <label className="text-sm">{t("proposedSolutionPlaceholder")}</label>
+            <label className="text-sm">
+              {t("proposedSolutionPlaceholder")}
+            </label>
             <textarea
               className={textareaClasses}
               placeholder={t("proposedSolutionPlaceholder")}

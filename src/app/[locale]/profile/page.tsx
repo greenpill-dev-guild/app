@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { usePrivy } from "@privy-io/react-auth";
 import { useRouter } from "next/navigation";
 import { getSupabaseClient, logoutSupabase } from "../../../../lib/supabase";
-import { TUser } from "@/app/types/app";
+import { TUser } from "@/app/types";
 import { useTranslations } from "next-intl";
 import useCheckTokens from "../../hooks/useCheckTokens";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";

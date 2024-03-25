@@ -2,7 +2,7 @@
 import { createContext, useEffect, useState } from "react";
 
 import { getSupabaseClient } from "../../../lib/supabase";
-import useCheckTokens from "../[locale]/hooks/useCheckTokens";
+import useCheckTokens from "../hooks/useCheckTokens";
 import { TDraftProposal } from "../types";
 
 export const DraftContext = createContext({

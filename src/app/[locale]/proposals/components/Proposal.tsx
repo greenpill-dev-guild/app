@@ -1,12 +1,14 @@
 "use client";
 
-import { ProposalContext } from "@/app/context/ProposalContext";
-import { IProposalProps } from "@/app/types";
-import { usePrivy } from "@privy-io/react-auth";
-import { useRouter } from "next/navigation";
 import { useContext } from "react";
+import { useRouter } from "next/navigation";
+import { usePrivy } from "@privy-io/react-auth";
+
+import { IProposalProps } from "@/app/types";
+import { ProposalContext } from "@/app/context/ProposalContext";
+
 import { logoutSupabase } from "../../../../../lib/supabase";
-import useCheckTokens from "../../hooks/useCheckTokens";
+import useCheckTokens from "../../../hooks/useCheckTokens";
 import ProposalList from "./ProposalList";
 
 export default function Proposal(props: IProposalProps) {

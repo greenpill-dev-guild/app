@@ -1,5 +1,5 @@
 "use client";
-import { IMilestoneProps, IRow } from "@/app/types/app";
+import { IMilestoneProps, IRow } from "@/app/types";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";

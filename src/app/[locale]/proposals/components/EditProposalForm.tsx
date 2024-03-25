@@ -1,15 +1,13 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { getSupabaseClient } from "../../../../../lib/supabase";
+import React from "react";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
-import {
-  TFullProposal,
-  TCreateProposal,
-  IEditProposalProps,
-} from "@/app/types";
-import { useTranslations } from "next-intl";
-import { MilestoneForm } from "../../components/MilestoneForm";
+
+import { getSupabaseClient } from "../../../../../lib/supabase";
+
+import { TCreateProposal, IEditProposalProps } from "@/app/types";
+import { MilestoneForm } from "../../../components/MilestoneForm";
 
 export const EditProposalForm = ({
   reloadData,

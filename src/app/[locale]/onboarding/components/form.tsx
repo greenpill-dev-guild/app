@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
-import useCheckTokens from "../../hooks/useCheckTokens";
-import { getSupabaseClient, logoutSupabase } from "../../../../../lib/supabase";
-import { useRouter } from "next/navigation";
-import { ImageUploader } from "../../components/ImageUploader";
+import React from "react";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
+
 import { TUser } from "@/app/types";
 
+import { getSupabaseClient } from "../../../../../lib/supabase";
 
+import useCheckTokens from "../../../hooks/useCheckTokens";
+import { ImageUploader } from "../../../components/ImageUploader";
 
 type UserFormType = {
   id: string;
@@ -18,28 +19,34 @@ type UserFormType = {
   avatar?: string;
 };
 
-export default function OnboardingForm({ currentUser }: { currentUser: TUser }) {
+export default function OnboardingForm({
+  currentUser,
+}: {
+  currentUser: TUser;
+}) {
   const { isAccessTokenValid, isRefreshTokenValid } = useCheckTokens();
   const router = useRouter();
   const queryString = new URLSearchParams(window.location.search);
   const t = useTranslations("Onboarding");
-  console.log("user", currentUser)
+  console.log("user", currentUser);
   const isUpdateForm = () => {
-    let result = false
+    let result = false;
     if (queryString.has("update")) {
       if (queryString.get("update") === "true") {
         result = true;
       }
     }
     return result;
-  }
+  };
 
   const methods = useForm<UserFormType>({
     mode: "onBlur",
     defaultValues: {
       givenName: isUpdateForm() ? currentUser?.name : "",
       familyName: isUpdateForm() ? currentUser?.family_name : "",
-      villageNeighborhood: isUpdateForm() ? currentUser?.village_neighborhood : "",
+      villageNeighborhood: isUpdateForm()
+        ? currentUser?.village_neighborhood
+        : "",
       email: isUpdateForm() ? currentUser?.email : "",
       avatar: "",
     },

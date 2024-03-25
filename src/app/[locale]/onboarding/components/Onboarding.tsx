@@ -1,10 +1,11 @@
 "use client";
-import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
-import { usePrivy } from "@privy-io/react-auth";
-import { getSupabaseClient, logoutSupabase } from "../../../../../lib/supabase";
-import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import useCheckTokens from "../../hooks/useCheckTokens";
+import { useRouter } from "next/navigation";
+import { usePrivy } from "@privy-io/react-auth";
+import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
+
+import { getSupabaseClient, logoutSupabase } from "../../../../../lib/supabase";
+import useCheckTokens from "../../../hooks/useCheckTokens";
 import { TUser } from "../types";
 
 const Onboarding = () => {
@@ -70,7 +71,7 @@ const Onboarding = () => {
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <h2 className="font-bold mb-6 text-center">{t("heading")}</h2>
-          
+
           <FormInput
             inputClasses={inputClasses}
             register={register("givenName", {

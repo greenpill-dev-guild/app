@@ -1,8 +1,10 @@
-import { IProposalListProps, TSummaryProposal } from "@/app/types";
 import { useTranslations } from "next-intl";
-import { useRouter, usePathname } from "next/navigation";
-import ProposalCard from "./ProposalCard";
 import { usePrivy } from "@privy-io/react-auth";
+import { useRouter, usePathname } from "next/navigation";
+
+import { IProposalListProps } from "@/app/types";
+
+import ProposalCard from "./ProposalCard";
 
 const ProposalList = ({
   proposals,
@@ -16,7 +18,7 @@ const ProposalList = ({
   const myProposals = pathname === "/proposals/me";
 
   const filteredProposals = proposals.filter((p) =>
-    myProposals ? p.author.id === user?.id : p.approved === true,
+    myProposals ? p.author.id === user?.id : p.approved === true
   );
 
   return (
@@ -44,7 +46,6 @@ const ProposalList = ({
               </div>
               <hr className="border-b border-inherit" />
             </>
-            
           ))
         ) : (
           <p className="text-sm text-center italic my-10">{t("nullMessage")}</p>
