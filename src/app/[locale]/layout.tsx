@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
+import { PrelineScript } from "../components/PrelineScript";
 import { BrowserCheck } from "../components/BrowserCheck";
 import { WagmiProvider } from "../components/WagmiProvider";
 import { ProposalsProvider } from "../context/ProposalContext";
@@ -50,6 +51,7 @@ export default async function RootLayout({
               </div>
             </WagmiProvider>
           </NextIntlClientProvider>
+          <PrelineScript />
         </body>
       </html>
     </BrowserCheck>
