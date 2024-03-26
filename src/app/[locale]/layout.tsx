@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 
-import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { PrelineScript } from "../components/PrelineScript";
 import { BrowserCheck } from "../components/BrowserCheck";
@@ -42,11 +41,7 @@ export default async function RootLayout({
             <WagmiProvider>
               <div>
                 <ProposalsProvider>
-                  <div className="mb-4">
-                    <Navbar />
-                  </div>
                   {children}
-                  <Footer />
                 </ProposalsProvider>
               </div>
             </WagmiProvider>

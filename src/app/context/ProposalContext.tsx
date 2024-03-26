@@ -13,7 +13,7 @@ export const ProposalContext = createContext({
   getProposalById: (proposalId: string) => new Promise<any>(() => {}),
 });
 
-export const ProposalsProvider = ({ children }: { children: any[] }) => {
+export const ProposalsProvider = ({ children }: { children: any }) => {
   const { isAccessTokenValid } = useCheckTokens();
   const [proposals, setProposals] = useState<TSummaryProposal[]>([]);
 
