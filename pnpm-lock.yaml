@@ -35,6 +35,9 @@ dependencies:
   jose:
     specifier: ^4.14.4
     version: 4.15.5
+  lucide-react:
+    specifier: 0.363.0
+    version: 0.363.0(react@18.2.0)
   nanoid:
     specifier: ^4.0.2
     version: 4.0.2
@@ -42,8 +45,8 @@ dependencies:
     specifier: 14.1.4
     version: 14.1.4(@babel/core@7.24.3)(react-dom@18.2.0)(react@18.2.0)
   next-intl:
-    specifier: ^2.22.1
-    version: 2.22.3(next@14.1.4)(react@18.2.0)
+    specifier: ^3.10.0
+    version: 3.10.0(next@14.1.4)(react@18.2.0)
   preline:
     specifier: 2.0.3
     version: 2.0.3
@@ -130,6 +133,9 @@ devDependencies:
   postcss:
     specifier: 8.4.24
     version: 8.4.24
+  prettier:
+    specifier: 3.2.5
+    version: 3.2.5
   storybook:
     specifier: ^8.0.4
     version: 8.0.4(react-dom@18.2.0)(react@18.2.0)
@@ -10896,6 +10902,14 @@ packages:
     dependencies:
       yallist: 4.0.0
 
+  /lucide-react@0.363.0(react@18.2.0):
+    resolution: {integrity: sha512-AlsfPCsXQyQx7wwsIgzcKOL9LwC498LIMAo+c0Es5PkHJa33xwmYAkkSoKoJWWWSYQEStqu58/jT4tL2gi32uQ==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
     hasBin: true
@@ -11729,9 +11743,8 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /next-intl@2.22.3(next@14.1.4)(react@18.2.0):
-    resolution: {integrity: sha512-6HNPxWPO7JRKhrMKJJQTsq6AOd3Neu5fsH0EUCYCwkIMqlrud24BkI6zBocWoOgAaqVrNylXtn53xbVTw6hdYg==}
-    deprecated: This was intended as 3.0, but CI accidentally published it as 2.22.3. Either stay on 2.22.1 or upgrade to 3.0
+  /next-intl@3.10.0(next@14.1.4)(react@18.2.0):
+    resolution: {integrity: sha512-kqQvOxLvI3ZjvcMFwOBjh71ufNWxHEMaEgxhFZGIXYAvkRI//9zbqeQJkQMwEpI6mDBM+6n+SJd0+pLt0t5GVw==}
     peerDependencies:
       next: ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -11740,7 +11753,7 @@ packages:
       negotiator: 0.6.3
       next: 14.1.4(@babel/core@7.24.3)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
-      use-intl: 2.22.3(react@18.2.0)
+      use-intl: 3.10.0(react@18.2.0)
     dev: false
 
   /next-tick@1.1.0:
@@ -14964,9 +14977,8 @@ packages:
       qs: 6.12.0
     dev: true
 
-  /use-intl@2.22.3(react@18.2.0):
-    resolution: {integrity: sha512-aGBsRvVoincUV+skTg1qYInU9bu4OuCBx02uGa0er9X+eR43ZqaZehIZk7zAVubyVZNLyKbawxX+SXvdxOUKcA==}
-    deprecated: This was intended as 3.0, but CI accidentally published it as 2.22.3. Either stay on 2.22.1 or upgrade to 3.0
+  /use-intl@3.10.0(react@18.2.0):
+    resolution: {integrity: sha512-rKCDbszyUP88477VP6DBCN3t3xdTta2o5GwgN1Rlquctm4PErO1YPDY+UI8DgfkVAWNt6X9gfF7ntQZ20H2ivg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
