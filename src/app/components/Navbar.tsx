@@ -60,7 +60,7 @@ export const Navbar = () => {
               </NavbarLink>
             </li>
             <li className="mb-6">
-              <NavbarLink setOverlay={setOverlay} path={"/settings"}>
+              <NavbarLink setOverlay={setOverlay} path={"/profile"}>
                 {t("link3")}
               </NavbarLink>
             </li>
