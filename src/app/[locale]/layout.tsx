@@ -8,6 +8,7 @@ import { PrelineScript } from "../components/PrelineScript";
 import { BrowserCheck } from "../components/BrowserCheck";
 import { WagmiProvider } from "../components/WagmiProvider";
 import { ProposalsProvider } from "../context/ProposalContext";
+import { Navbar } from "../components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,7 +43,12 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages} locale={locale}>
             <WagmiProvider>
               <div>
-                <ProposalsProvider>{children}</ProposalsProvider>
+                <ProposalsProvider>
+                  <div className="mb-4">
+                    <Navbar />
+                  </div>
+                  {children}
+                </ProposalsProvider>
               </div>
             </WagmiProvider>
           </NextIntlClientProvider>

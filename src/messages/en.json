@@ -17,7 +17,6 @@
     "submitButton": "Submit",
     "profileImage": "Profile Image",
     "imageUploadBtn": "Upload"
-
   },
   "Proposals": {
     "heading": "Proposed Proposals",
@@ -83,36 +82,14 @@
     "minimumBudget": "Minimum Budget",
     "totalBudget": "Total Budget"
   },
-  "Donate": {
-    "heading": "Donate",
-    "copied": "Address copied!",
-    "disclaimer": "If you don't have a crypto wallet, ",
-    "link": "donate at this link."
-  },
   "Navigation": {
     "link1": "My Proposals",
     "link2": "All Proposals",
-    "link3": "Donate",
-    "link4": "My Votes",
-    "link5": "Settings",
-    "link6": "Learn More"
+    "link3": "Settings"
   },
   "Settings": {
     "heading": "User Settings",
     "logoutButton": "Logout"
-  },
-  "Footer": {
-    "message": "The voting phase has been extended to mid-October. Exact date to be announced."
-  },
-  "My Cart": {
-    "heading": "My Votes",
-    "nullMessage": "You currently have zero votes on proposals. Please go to All Proposals and click the heart next to any proposals you would like to submit one or more vote credits for.",
-    "checkoutButton": "Submit Votes"
-  },
-  "Checkout": {
-    "heading": "Submit Votes",
-    "disclaimer": "Please review your votes and confirm your donation.",
-    "confirmButton": "Confirm"
   },
   "My Proposals": {
     "heading": "My Proposals",

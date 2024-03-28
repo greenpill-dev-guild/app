@@ -17,7 +17,6 @@
     "submitButton": "Tsᴐe Yi",
     "profileImage": "Profile Image",
     "imageUploadBtn": "tsɔe da ɖe Internet dzi"
-
   },
   "Proposals": {
     "heading": "Gakpekpeɖeŋunana Siwo Wodo Ŋu",
@@ -84,12 +83,6 @@
     "minimumBudget": "Gazazã Suetɔ Kekeake",
     "totalBudget": "Gazazã Ƒe Gazazãwo Katã"
   },
-  "Donate": {
-    "heading": "Na nu",
-    "button": "Adrɛs si wogbugbɔ ŋlɔ!",
-    "disclaimer": "Ne crypto gakotoku mele asiwò o la, ",
-    "link": "dzɔ nu le kadodo sia dzi."
-  },
   "Navigation": {
     "link1": "Nye Aɖaŋuɖoɖowo",
     "link2": "Aɖaŋuɖoɖowo",
@@ -101,19 +94,6 @@
   "Settings": {
     "heading": "Zãla ƒe Ðoɖowo",
     "logoutButton": "Do Le Eme"
-  },
-  "Footer": {
-    "message": "Wokeke akɔdada ƒe akpaa ɖe enu va ɖo October ƒe domedome. Ɣletiŋkeke si tututu woaɖe gbeƒãe."
-  },
-  "My Cart": {
-    "tanya": "Nye Keke",
-    "nullMessage": "Nu aɖeke mele wò kekea me fifia o.",
-    "checkoutButton": "Nukpɔkpɔ"
-  },
-  "Checkout": {
-    "tanya": "Xɔxexe",
-    "disclaimer": "Taflatse lé ŋku ɖe wò kekea ŋu eye nàɖo kpe wò nudzɔdzɔa dzi.",
-    "confirmButton": "Ðo kpe edzi"
   },
   "My Proposals": {
     "tanya": "Nye Gakpekpeɖeŋunana",

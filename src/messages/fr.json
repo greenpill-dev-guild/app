@@ -82,12 +82,6 @@
     "minimumBudget": "Budget Minimal",
     "totalBudget": "Budget Total (CFA)"
   },
-  "Donate": {
-    "heading": "Donner",
-    "copied": "Adresse copiée!",
-    "disclaimer": "Si vous n'avez pas de portefeuille crypto, ",
-    "link": "faire un don sur ce lien."
-  },
   "Navigation": {
     "link1": "Mes Propositions",
     "link2": "Les Propositions",
@@ -99,19 +93,6 @@
   "Settings": {
     "heading": "Paramètres Utilisateur",
     "logoutButton": "Se Déconnecter"
-  },
-  "Footer": {
-    "message": "La phase de vote a été prolongée jusqu'à la mi-octobre. Date exacte à annoncer."
-  },
-  "My Cart": {
-    "heading": "Mon panier",
-    "nullMessage": "Il n'y a actuellement aucun article dans votre panier.",
-    "checkoutButton": "Commander"
-  },
-  "Checkout": {
-    "heading": "Commander",
-    "disclaimer": "Veuillez vérifier votre panier et confirmer votre don.",
-    "confirmButton": "Confirmer"
   },
   "My Proposals": {
     "heading": "Mes subventions",
