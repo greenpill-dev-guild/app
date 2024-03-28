@@ -2,8 +2,8 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 
-import { Footer } from "../components/Footer";
 import { PrelineScript } from "../components/PrelineScript";
 import { BrowserCheck } from "../components/BrowserCheck";
 import { WagmiProvider } from "../components/WagmiProvider";
@@ -27,6 +27,8 @@ export default async function RootLayout({
 }) {
   let messages;
 
+  unstable_setRequestLocale(locale);
+
   try {
     messages = (await import(`../../messages/${locale}.json`)).default;
   } catch (error) {
@@ -40,9 +42,7 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages} locale={locale}>
             <WagmiProvider>
               <div>
-                <ProposalsProvider>
-                  {children}
-                </ProposalsProvider>
+                <ProposalsProvider>{children}</ProposalsProvider>
               </div>
             </WagmiProvider>
           </NextIntlClientProvider>

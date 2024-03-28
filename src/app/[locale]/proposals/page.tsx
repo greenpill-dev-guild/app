@@ -1,5 +1,13 @@
+import { unstable_setRequestLocale } from "next-intl/server";
+
 import Proposal from "./components/Proposal";
 
-export default function ProposalPage() {
+interface ProposalParams {
+  locale: string;
+}
+
+export default function ProposalPage(props: { params: ProposalParams }) {
+  unstable_setRequestLocale(props.params.locale);
+
   return <Proposal showAction={true} />;
 }

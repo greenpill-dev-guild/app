@@ -3,6 +3,7 @@ import "react-tailwindcss-select/dist/index.css";
 
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+
 import Select from "react-tailwindcss-select";
 import { usePrivy } from "@privy-io/react-auth";
 import React, { useState, useEffect } from "react";
@@ -17,6 +18,12 @@ import {
 import { TUser, TCreateProposal } from "@/app/types";
 import useCheckTokens from "../../../../hooks/useCheckTokens";
 import { MilestoneForm } from "../../../../components/MilestoneForm";
+
+interface WriteProposalProps {
+  params: {
+    locale: string;
+  };
+}
 
 interface UserOption {
   id: string;

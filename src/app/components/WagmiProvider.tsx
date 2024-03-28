@@ -32,13 +32,9 @@ export function WagmiProvider({ children }: any) {
       appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID as string}
       onSuccess={handleLogin}
       config={{
-        loginMethods: ["sms"],
         appearance: {
           theme: "light",
           logo: "/impact-stream-logo.svg",
-        },
-        embeddedWallets: {
-          createOnLogin: "users-without-wallets",
         },
       }}
     >

@@ -1,5 +1,13 @@
+import { unstable_setRequestLocale } from "next-intl/server";
+
 import Onboarding from "./components/Onboarding";
 
-export default function OnboardingPage() {
+interface OnboardingParams {
+  locale: string;
+}
+
+export default function OnboardingPage(props: { params: OnboardingParams }) {
+  unstable_setRequestLocale(props.params.locale);
+
   return <Onboarding />;
 }

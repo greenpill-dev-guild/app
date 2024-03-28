@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useTranslations } from "next-intl";
 import { usePrivy } from "@privy-io/react-auth";
+import { unstable_setRequestLocale } from "next-intl/server";
 import React, { useState, useEffect, useContext } from "react";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 
@@ -16,7 +17,13 @@ import { ProposalContext } from "@/app/context/ProposalContext";
 
 import { EditProposalForm } from "../components/EditProposalForm";
 
-export default function Page({ params }: { params: { slug: string } }) {
+export default function Page({
+  params,
+}: {
+  params: { slug: string; locale: string };
+}) {
+  unstable_setRequestLocale(params.locale);
+
   const { user } = usePrivy();
   const [proposal, setProposal] = useState<TFullProposal>();
   const [isAuthor, setIsAuthor] = useState<boolean>(false);
