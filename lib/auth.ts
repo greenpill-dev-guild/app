@@ -1,6 +1,5 @@
-import { nanoid } from "nanoid";
 import { jwtVerify, SignJWT, JWTPayload } from "jose";
-
+import { nanoid } from "nanoid";
 export const generateAccessToken = async (address: string, userId: string) => {
   return await new SignJWT({ address, sub: userId, aud: "authenticated" })
     .setProtectedHeader({
@@ -11,7 +10,7 @@ export const generateAccessToken = async (address: string, userId: string) => {
     .setExpirationTime("2m")
     .sign(
       new TextEncoder().encode(
-        process.env.SUPABASE_ACCESS_TOKEN_SECRET as string
+        process.env.NEXT_PUBLIC_SUPABASE_ACCESS_TOKEN_SECRET as string
       )
     );
 };
@@ -26,7 +25,7 @@ export const generateRefreshToken = async (address: string, userId: string) => {
     .setExpirationTime("30d")
     .sign(
       new TextEncoder().encode(
-        process.env.SUPABASE_ACCESS_TOKEN_SECRET as string
+        process.env.NEXT_PUBLIC_SUPABASE_ACCESS_TOKEN_SECRET as string
       )
     );
 };
@@ -35,7 +34,7 @@ export const verifyAccessToken = async (token: string) => {
     const verified = await jwtVerify(
       token,
       new TextEncoder().encode(
-        process.env.SUPABASE_ACCESS_TOKEN_SECRET as string
+        process.env.NEXT_PUBLIC_SUPABASE_ACCESS_TOKEN_SECRET as string
       )
     );
     return { data: verified.payload as JWTPayload, error: null };
@@ -49,7 +48,7 @@ export const verifyRefreshToken = async (token: string) => {
     const verified = await jwtVerify(
       token,
       new TextEncoder().encode(
-        process.env.SUPABASE_ACCESS_TOKEN_SECRET as string
+        process.env.NEXT_PUBLIC_SUPABASE_ACCESS_TOKEN_SECRET as string
       )
     );
     return { data: verified.payload as JWTPayload, error: null };
