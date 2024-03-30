@@ -4,7 +4,7 @@ import { useRouter, usePathname } from "next/navigation";
 
 import { IProposalListProps } from "@/app/types";
 
-import ProposalCard from "./ProposalCard";
+import ProposalCard from "./Card";
 
 const ProposalList = ({
   proposals,

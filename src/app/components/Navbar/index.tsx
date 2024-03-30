@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { usePrivy } from "@privy-io/react-auth";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-import NavbarLink from "./NavbarLink";
+import NavbarLink from "./Link";
 
 export const Navbar = () => {
   const { user } = usePrivy();

@@ -13,9 +13,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 
 import { TFullProposal, TMilestone } from "@/app/types";
-import { ProposalContext } from "@/app/context/ProposalContext";
+import { ProposalContext } from "@/app/providers/ProposalProvider";
 
-import { EditProposalForm } from "../components/EditProposalForm";
+import { EditProposalForm } from "../../../views/Proposals/EditProposalForm";
 
 export default function Page({
   params,

@@ -1,5 +1,6 @@
-import { Wallet } from "../components/Wallet";
 import { unstable_setRequestLocale } from "next-intl/server";
+
+import { Wallet } from "../views/Login";
 
 interface HomeParams {
   locale: string;

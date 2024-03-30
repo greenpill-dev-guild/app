@@ -1,6 +1,6 @@
 import { unstable_setRequestLocale } from "next-intl/server";
 
-import Onboarding from "./components/Onboarding";
+import Onboarding from "../../views/Onboarding";
 
 interface OnboardingParams {
   locale: string;

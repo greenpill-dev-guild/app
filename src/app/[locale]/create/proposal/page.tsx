@@ -11,13 +11,10 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { SelectValue } from "react-tailwindcss-select/dist/components/type";
 
-import {
-  getSupabaseClient,
-  logoutSupabase,
-} from "../../../../../../lib/supabase";
+import { getSupabaseClient, logoutSupabase } from "../../../../../lib/supabase";
 import { TUser, TCreateProposal } from "@/app/types";
-import useCheckTokens from "../../../../hooks/useCheckTokens";
-import { MilestoneForm } from "../../../../components/MilestoneForm";
+import useCheckTokens from "../../../hooks/useCheckTokens";
+import { MilestoneForm } from "../../../components/Milestone/Form";
 
 interface WriteProposalProps {
   params: {

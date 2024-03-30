@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation";
 import { usePrivy } from "@privy-io/react-auth";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 
-import { getSupabaseClient, logoutSupabase } from "../../../../../lib/supabase";
-import useCheckTokens from "../../../hooks/useCheckTokens";
-import { TUser } from "../types";
+import { getSupabaseClient, logoutSupabase } from "../../../../lib/supabase";
+import useCheckTokens from "../../hooks/useCheckTokens";
+import { TUser } from "../../[locale]/onboarding/types";
 
 const Onboarding = () => {
   const { user, ready, authenticated, logout } = usePrivy();

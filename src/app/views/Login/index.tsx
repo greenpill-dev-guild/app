@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { usePrivy } from "@privy-io/react-auth";
 import React, { useState, useEffect } from "react";
 
-import { getSupabaseClient } from "../../../lib/supabase";
+import { getSupabaseClient } from "../../../../lib/supabase";
 
 const supabaseAuth = async (address: string, userId: string) => {
   await fetch("/api/auth/login", {

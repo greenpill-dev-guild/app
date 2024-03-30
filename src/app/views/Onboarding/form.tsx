@@ -5,10 +5,10 @@ import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 
 import { TUser } from "@/app/types";
 
-import { getSupabaseClient } from "../../../../../lib/supabase";
+import { getSupabaseClient } from "../../../../lib/supabase";
 
-import useCheckTokens from "../../../hooks/useCheckTokens";
-import { ImageUploader } from "../../../components/ImageUploader";
+import useCheckTokens from "../../hooks/useCheckTokens";
+import { ImageUploader } from "../../components/Image/Uploader";
 
 type UserFormType = {
   id: string;

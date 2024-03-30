@@ -4,10 +4,10 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 
-import { getSupabaseClient } from "../../../../../lib/supabase";
+import { getSupabaseClient } from "../../../../lib/supabase";
 
 import { TCreateProposal, IEditProposalProps } from "@/app/types";
-import { MilestoneForm } from "../../../components/MilestoneForm";
+import { MilestoneForm } from "../../components/Milestone/Form";
 
 export const EditProposalForm = ({
   reloadData,

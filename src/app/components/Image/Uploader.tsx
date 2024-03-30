@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { usePrivy } from "@privy-io/react-auth";
-import { getSupabaseClient } from "../../../lib/supabase";
+import { getSupabaseClient } from "../../../../lib/supabase";
 import { Web3Storage, CIDString, Web3File } from "web3.storage";
-import { storeImage } from "./ImageGallery";
+import { storeImage } from "./Gallery";
 import Image from "next/legacy/image";
 import { useTranslations } from "next-intl";
 

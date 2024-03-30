@@ -4,12 +4,13 @@ import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import { usePrivy } from "@privy-io/react-auth";
 
-import { IProposalProps } from "@/app/types";
-import { ProposalContext } from "@/app/context/ProposalContext";
+import { logoutSupabase } from "../../../../lib/supabase";
 
-import { logoutSupabase } from "../../../../../lib/supabase";
-import useCheckTokens from "../../../hooks/useCheckTokens";
-import ProposalList from "./ProposalList";
+import { IProposalProps } from "@/app/types";
+import useCheckTokens from "@/app/hooks/useCheckTokens";
+import { ProposalContext } from "@/app/providers/ProposalProvider";
+
+import ProposalList from "@/app/components/Proposal/List";
 
 export default function Proposal(props: IProposalProps) {
   const { ready, authenticated, logout } = usePrivy();
