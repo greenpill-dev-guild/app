@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+.brand-bg-color {
+  background-color: rgb(203, 229, 241)
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+}
+
+.select-search-container:not(.select-search-has-focus) .select-search-select {
+  display: none;
+}
