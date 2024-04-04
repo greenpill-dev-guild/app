@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+
 import SplashText from "./Text";
 
 function Splash() {

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { MilestoneForm } from "./Form";
 
 export default {
-  title: "Components/Milestone",
+  title: "Components/Milestone/Form",
   component: MilestoneForm,
   argTypes: {},
 } as Meta<typeof MilestoneForm>;

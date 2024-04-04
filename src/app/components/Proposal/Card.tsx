@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { usePrivy } from "@privy-io/react-auth";
 
 import { IProposalCardProps } from "@/app/types";
-import { truncateDescription } from "@/app/utils/text";
+import { truncateDescription } from "../../utils/text";
 
 const ProposalCard = ({
   proposal,

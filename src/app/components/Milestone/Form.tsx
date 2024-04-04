@@ -50,7 +50,9 @@ export const MilestoneForm = ({ milestones, ...props }: IMilestoneProps) => {
             />
           </div>
           <div className="w-2/5">
-            <label className="text-sm block pl-2">{t("budgetPlaceholder")}</label>
+            <label className="text-sm block pl-2">
+              {t("budgetPlaceholder")}
+            </label>
             {row.key !== "default" && (
               <input
                 {

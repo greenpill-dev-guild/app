@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { FormInfo } from "./Info";
+import { FormProgress } from "./Progress";
 
 export default {
-  title: "Components/Form/Info",
-  component: FormInfo,
+  title: "Components/Form/Progress",
+  component: FormProgress,
   argTypes: {},
-} as Meta<typeof FormInfo>;
+} as Meta<typeof FormProgress>;
 
-type Story = StoryObj<typeof FormInfo>;
+type Story = StoryObj<typeof FormProgress>;
 
 export const Primary: Story = {
   args: {},
