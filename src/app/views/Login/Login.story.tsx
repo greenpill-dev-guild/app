@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Wallet } from ".";
+import { Login } from ".";
 
 export default {
   title: "Views/Login",
-  component: Wallet,
+  component: Login,
   argTypes: {},
-} as Meta<typeof Wallet>;
+} as Meta<typeof Login>;
 
-type Story = StoryObj<typeof Wallet>;
+type Story = StoryObj<typeof Login>;
 
 export const Primary: Story = {
   args: {},

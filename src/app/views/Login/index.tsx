@@ -20,27 +20,31 @@ const supabaseAuth = async (address: string, userId: string) => {
   });
 };
 
-export function Wallet() {
+export function Login() {
   const router = useRouter();
-  const { login, authenticated, user, ready } = usePrivy();
   const t = useTranslations("Sign-In");
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  const { login, logout, authenticated, user, ready } = usePrivy();
 
   const startLogin = () => {
     setIsLoggingIn(true);
     login();
   };
 
-  const cancelLogin = () => {
-    if (ready) {
-      setIsLoggingIn(false);
-    }
-  };
+  // const cancelLogin = async () => {
+  //   if (ready) {
+  //     setIsLoggingIn(false);
+
+  //     await logout();
+  //   }
+  // };
 
   useEffect(() => {
     const checkOnboardingStatus = async () => {
       if (ready && authenticated && user && user.wallet?.address) {
         await supabaseAuth(user.wallet.address, user.id);
+
         const supabase = await getSupabaseClient();
         const { data, error } = await supabase
           .from("users")
@@ -53,7 +57,7 @@ export function Wallet() {
         if (!data.onboarded) {
           router.push(`/onboarding/`);
         } else {
-          router.push(`/proposals/`);
+          router.push(`/onboarding/`);
         }
       }
     };
@@ -89,11 +93,6 @@ export function Wallet() {
           </svg>
         )}
       </button>
-      {isLoggingIn && ready && (
-        <p className="underline mb-8 text-sky-600 mt-2" onClick={cancelLogin}>
-          Cancel Login
-        </p>
-      )}
     </>
   );
 }

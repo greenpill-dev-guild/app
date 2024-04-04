@@ -6,18 +6,22 @@ import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 
 import { getSupabaseClient, logoutSupabase } from "../../../../lib/supabase";
 import useCheckTokens from "../../hooks/useCheckTokens";
-import { TUser } from "../../[locale]/onboarding/types";
+import { TUser } from "@/app/types";
+
+interface OnboardingUser extends TUser {
+  avatar: string;
+}
 
 const Onboarding = () => {
   const { user, ready, authenticated, logout } = usePrivy();
   const { isAccessTokenValid, isRefreshTokenValid } = useCheckTokens();
   const router = useRouter();
-  const methods = useForm<TUser>({
+  const methods = useForm<OnboardingUser>({
     mode: "onBlur",
     defaultValues: {
-      givenName: "",
-      familyName: "",
-      villageNeighborhood: "",
+      name: "",
+      family_name: "",
+      village_neighborhood: "",
       email: "",
       avatar: "",
     },
@@ -46,9 +50,9 @@ const Onboarding = () => {
         const { error } = await supabase
           .from("users")
           .update({
-            name: data.givenName,
-            family_name: data.familyName,
-            village_neighborhood: data.villageNeighborhood,
+            name: data.name,
+            family_name: data.family_name,
+            village_neighborhood: data.village_neighborhood,
             phone_number: user?.phone?.number,
             email: data.email,
             onboarded: true,
@@ -74,7 +78,7 @@ const Onboarding = () => {
 
           <FormInput
             inputClasses={inputClasses}
-            register={register("givenName", {
+            register={register("name", {
               required: "Given Name required",
             })}
             errors={errors}
@@ -82,7 +86,7 @@ const Onboarding = () => {
           />
           <FormInput
             inputClasses={inputClasses}
-            register={register("familyName", {
+            register={register("family_name", {
               required: "Last Name required",
             })}
             errors={errors}
@@ -90,7 +94,7 @@ const Onboarding = () => {
           />
           <FormInput
             inputClasses={inputClasses}
-            register={register("villageNeighborhood", {
+            register={register("village_neighborhood", {
               required: "Village or Neighborhood is required",
             })}
             errors={errors}
