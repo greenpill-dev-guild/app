@@ -34,7 +34,7 @@ export function WagmiProvider({ children }: any) {
       config={{
         appearance: {
           theme: "light",
-          logo: "/impact-stream-logo.svg",
+          logo: "/icons/android-chrome-512x512.png",
         },
       }}
     >
