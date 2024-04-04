@@ -7,10 +7,11 @@ import React, { useState, useEffect } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
 import { getSupabaseClient, logoutSupabase } from "../../../../lib/supabase";
-import { TUser } from "@/app/types";
-import useCheckTokens from "../../hooks/useCheckTokens";
 
-export default function Settings() {
+import { TUser } from "@/app/types";
+import useCheckTokens from "@/app/hooks/useCheckTokens";
+
+export default function ProfilePage() {
   const { logout, user, ready, authenticated } = usePrivy();
   const { isAccessTokenValid, isRefreshTokenValid } = useCheckTokens();
   const router = useRouter();

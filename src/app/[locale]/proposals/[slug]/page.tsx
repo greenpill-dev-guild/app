@@ -8,7 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useTranslations } from "next-intl";
 import { usePrivy } from "@privy-io/react-auth";
-import { unstable_setRequestLocale } from "next-intl/server";
+// import { unstable_setRequestLocale } from "next-intl/server";
 import React, { useState, useEffect, useContext } from "react";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 
@@ -17,12 +17,12 @@ import { ProposalContext } from "@/app/providers/ProposalProvider";
 
 import { EditProposalForm } from "../../../views/Proposals/EditProposalForm";
 
-export default function Page({
+export default function ProposalPage({
   params,
 }: {
   params: { slug: string; locale: string };
 }) {
-  unstable_setRequestLocale(params.locale);
+  // unstable_setRequestLocale(params.locale);
 
   const { user } = usePrivy();
   const [proposal, setProposal] = useState<TFullProposal>();
@@ -59,44 +59,6 @@ export default function Page({
     }
   }, [proposal]);
 
-  function convertShape(obj: any) {
-    const convertedObj = {
-      id: obj.id || null,
-      approved: obj.approved || null,
-      title: obj.title || null,
-      author: {
-        id: obj.author.id || null,
-        name: obj.author.name || null,
-        family_name: obj.author.family_name || null,
-        profile_image_url: obj.author.profile_image_url || null,
-      },
-      location: obj.location || null,
-      summary: obj.summary || null,
-      timeline: obj.timeline || null,
-      affected_locations: obj.affected_locations || null,
-      community_problem: obj.community_problem || null,
-      proposed_solution: obj.proposed_solution || null,
-      sustainability: obj.sustainability || null,
-      minimum_budget: obj.minimum_budget || null,
-      key_players: obj.key_players || null,
-      project_milestones: obj.project_milestones || null,
-      collaborators: null,
-      allo_recipient_id: obj.allo_recipient_id || null,
-      allo_anchor_address: obj.allo_anchor_address || null,
-    };
-
-    if (obj.collaborators && Array.isArray(obj.collaborators)) {
-      convertedObj.collaborators = obj.collaborators.map(
-        (collaborator: any) => ({
-          name: collaborator.name || null,
-          family_name: collaborator.family_name || null,
-        })
-      );
-    }
-
-    return convertedObj;
-  }
-
   return (
     <>
       {isEditing && proposal && (
@@ -110,7 +72,6 @@ export default function Page({
           proposal={proposal}
         />
       )}
-
       {!isEditing && (
         <div className="pr-4 pl-4 pb-4">
           <div className="font-bold mb-6">

@@ -1,10 +1,6 @@
-export const LoadingSkeleton = () => {
-  return (
-      <>Loading...</>
-  )
-}
+import { LoadingSkeleton } from "@/app/components/LoadingSkeleton";
 
 export default function Loading() {
-    // You can add any UI inside Loading, including a Skeleton.
-    return <LoadingSkeleton />
-  }
+  // You can add any UI inside Loading, including a Skeleton.
+  return <LoadingSkeleton />;
+}

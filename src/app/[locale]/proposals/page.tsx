@@ -6,7 +6,7 @@ interface ProposalParams {
   locale: string;
 }
 
-export default function ProposalPage(props: { params: ProposalParams }) {
+export default function ProposalsPage(props: { params: ProposalParams }) {
   unstable_setRequestLocale(props.params.locale);
 
   return <Proposal showAction={true} />;

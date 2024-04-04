@@ -1,17 +1,17 @@
 import { unstable_setRequestLocale } from "next-intl/server";
 
-import { Wallet } from "../views/Login";
+import { Login } from "../views/Login";
 
-interface HomeParams {
+interface IndexParams {
   locale: string;
 }
 
-export default function HomePage({
+export default function IndexPage({
   params: { locale },
 }: {
-  params: HomeParams;
+  params: IndexParams;
 }) {
   unstable_setRequestLocale(locale);
 
-  return <Wallet />;
+  return <Login />;
 }

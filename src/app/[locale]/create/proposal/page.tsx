@@ -3,7 +3,6 @@ import "react-tailwindcss-select/dist/index.css";
 
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-
 import Select from "react-tailwindcss-select";
 import { usePrivy } from "@privy-io/react-auth";
 import React, { useState, useEffect } from "react";
@@ -12,14 +11,13 @@ import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { SelectValue } from "react-tailwindcss-select/dist/components/type";
 
 import { getSupabaseClient, logoutSupabase } from "../../../../../lib/supabase";
-import { TUser, TCreateProposal } from "@/app/types";
-import useCheckTokens from "../../../hooks/useCheckTokens";
-import { MilestoneForm } from "../../../components/Milestone/Form";
 
-interface WriteProposalProps {
-  params: {
-    locale: string;
-  };
+import { TCreateProposal } from "@/app/types";
+import useCheckTokens from "@/app/hooks/useCheckTokens";
+import { MilestoneForm } from "@/app/components/Milestone/Form";
+
+interface CreateProposalParams {
+  locale: string;
 }
 
 interface UserOption {
@@ -33,7 +31,9 @@ interface SelectOption {
   label: string;
 }
 
-export default function WriteProposal() {
+export default function CreateProposal(props: {
+  params: CreateProposalParams;
+}) {
   const { user, authenticated, ready, logout } = usePrivy();
   const { isAccessTokenValid, isRefreshTokenValid } = useCheckTokens();
   const [userOptions, setUserOptions] = useState<SelectOption[]>([]);
