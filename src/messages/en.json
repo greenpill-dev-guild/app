@@ -1,7 +1,7 @@
 {
   "Sign-In": {
     "signInButton": "Sign-In",
-    "disclaimer": "To sign-in enter your phone number beginning with country code 228, then check for a message from Impact Stream (Sandbox) and enter your code in the pop-up."
+    "disclaimer": "To sign-in enter your phone number beginning with country code 228, then check for a message from Impact Voice (Sandbox) and enter your code in the pop-up."
   },
   "Onboarding": {
     "heading": "Complete Your Profile",

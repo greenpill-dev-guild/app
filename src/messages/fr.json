@@ -1,7 +1,7 @@
 {
   "Sign-In": {
     "signInButton": "S'identifier",
-    "disclaimer": "Pour vous connecter, entrez votre numéro de téléphone commençant par l'indicatif de pays 228, puis recherchez un message d'Impact Stream (Sandbox) et entrez votre code dans la fenêtre contextuelle."
+    "disclaimer": "Pour vous connecter, entrez votre numéro de téléphone commençant par l'indicatif de pays 228, puis recherchez un message d'Impact Voice (Sandbox) et entrez votre code dans la fenêtre contextuelle."
   },
   "Onboarding": {
     "heading": "Complète Ton Profil",
