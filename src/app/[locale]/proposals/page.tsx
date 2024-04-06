@@ -1,6 +1,6 @@
 import { unstable_setRequestLocale } from "next-intl/server";
 
-import Proposal from "../../views/Proposals/Proposal";
+import { ProposalsView } from "@/app/views/Proposals";
 
 interface ProposalParams {
   locale: string;
@@ -9,5 +9,5 @@ interface ProposalParams {
 export default function ProposalsPage(props: { params: ProposalParams }) {
   unstable_setRequestLocale(props.params.locale);
 
-  return <Proposal showAction={true} />;
+  return <ProposalsView showAction={true} />;
 }

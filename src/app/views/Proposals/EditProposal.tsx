@@ -1,31 +1,32 @@
 "use client";
+
 import React from "react";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 
 import { getSupabaseClient } from "../../../../lib/supabase";
 
 import { TCreateProposal, IEditProposalProps } from "@/app/types";
-import { MilestoneForm } from "../../components/Milestone/Form";
 
-export const EditProposalForm = ({
+interface EditProposalViewProps extends IEditProposalProps {}
+
+export const EditProposalView: React.FC<EditProposalViewProps> = ({
   reloadData,
   setIsEditing,
   proposal,
   proposalId,
-  ...props
-}: IEditProposalProps) => {
+  // ...props
+}) => {
   const t = useTranslations("Create Proposal");
-  const router = useRouter();
+  // const router = useRouter();
 
   const methods = useForm<TCreateProposal>({
     mode: "onBlur",
     defaultValues: {
       title: proposal.title,
       location: proposal.location,
-      summary: proposal.summary,
-      affected_locations: proposal.affected_locations,
+      banner_image: proposal.banner_image,
+      start_date: proposal.start_date,
       community_problem: proposal.community_problem,
       proposed_solution: proposal.proposed_solution,
       minimum_budget: proposal.minimum_budget,
@@ -49,10 +50,10 @@ export const EditProposalForm = ({
         .from("proposals")
         .update({
           title: formData.title,
-          summary: formData.summary,
+          banner_image: formData.banner_image,
           timeline: formData.timeline,
           location: formData.location,
-          affected_locations: formData.affected_locations,
+          start_date: formData.start_date,
           community_problem: formData.community_problem,
           proposed_solution: formData.proposed_solution,
           minimum_budget: formData.minimum_budget,
@@ -98,30 +99,30 @@ export const EditProposalForm = ({
           {errors.location && errors.location.message}
         </span>
 
-        <label className="text-xs">{t("summaryPlaceholder")}</label>
+        <label className="text-xs">{t("banner_imagePlaceholder")}</label>
         <textarea
           className="w-full border border-slate-300 rounded h-20 pl-2 mb-2"
-          placeholder={t("summaryPlaceholder")}
-          {...register("summary", {
-            required: t("summaryValidationMessage"),
+          placeholder={t("banner_imagePlaceholder")}
+          {...register("banner_image", {
+            required: t("banner_imageValidationMessage"),
           })}
         />
         <span className="text-red-600 text-xs">
           {" "}
-          {errors.summary && errors.summary.message}
+          {errors.banner_image && errors.banner_image.message}
         </span>
 
         <label className="text-xs">{t("locationsAffectedPlaceholder")}</label>
         <input
           className="w-full border border-slate-300 rounded h-10 pl-2 mb-2"
           placeholder={t("locationsAffectedPlaceholder")}
-          {...register("affected_locations", {
+          {...register("start_date", {
             required: t("locationsAffectedValidationMessage"),
           })}
         />
         <span className="text-red-600 text-xs">
           {" "}
-          {errors.affected_locations && errors.affected_locations.message}
+          {errors.start_date && errors.start_date.message}
         </span>
 
         <label className="text-xs">{t("communityProblemPlaceholder")}</label>
@@ -190,7 +191,7 @@ export const EditProposalForm = ({
         </span>
 
         <label className="text-xs mt-4 block">{t("heading6")}</label>
-        <MilestoneForm milestones={proposal.project_milestones} />
+        {/* <MilestoneForm milestones={proposal.project_milestones} /> */}
         <span className="text-red-600 text-xs">
           {" "}
           {errors.milestones && errors.milestones.message}

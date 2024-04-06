@@ -1,6 +1,6 @@
 import { unstable_setRequestLocale } from "next-intl/server";
 
-import { Login } from "../views/Login";
+import { Login } from "@/app/views/Login";
 
 interface IndexParams {
   locale: string;

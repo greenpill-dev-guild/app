@@ -1,4 +1,5 @@
 "use client";
+
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { usePrivy } from "@privy-io/react-auth";
@@ -12,10 +13,9 @@ interface OnboardingUser extends TUser {
   avatar: string;
 }
 
-const Onboarding = () => {
-  const { user, ready, authenticated, logout } = usePrivy();
-  const { isAccessTokenValid, isRefreshTokenValid } = useCheckTokens();
+export const OnboardingView = () => {
   const router = useRouter();
+  const t = useTranslations("Onboarding");
   const methods = useForm<OnboardingUser>({
     mode: "onBlur",
     defaultValues: {
@@ -26,17 +26,21 @@ const Onboarding = () => {
       avatar: "",
     },
   });
+  const { user, ready, authenticated, logout } = usePrivy();
+  const { isAccessTokenValid, isRefreshTokenValid } = useCheckTokens();
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting, isSubmitted, isValid },
   } = methods;
 
-  const t = useTranslations("Onboarding");
   if (!ready) return null;
+
   if (ready && !authenticated) {
     router.push("/");
   }
+
   if (!isRefreshTokenValid) {
     logoutSupabase();
     logout();
@@ -166,5 +170,3 @@ const FormInput = (props: {
     </div>
   );
 };
-
-export default Onboarding;
