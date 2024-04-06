@@ -11,7 +11,10 @@ export default {
 type Story = StoryObj<typeof FormProgress>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    currentStep: 1,
+    steps: ["Step 1", "Step 2", "Step 3"],
+  },
 };
 
 // export const Secondary: Story = {

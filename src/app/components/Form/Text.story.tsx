@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Splash } from ".";
+import { FormInput } from "./Input";
 
 export default {
-  title: "Components/Splash",
-  component: Splash,
+  title: "Components/Form/Input",
+  component: FormInput,
   argTypes: {},
-} as Meta<typeof Splash>;
+} as Meta<typeof FormInput>;
 
-type Story = StoryObj<typeof Splash>;
+type Story = StoryObj<typeof FormInput>;
 
 export const Primary: Story = {
   args: {},
@@ -16,9 +16,8 @@ export const Primary: Story = {
 
 // export const Secondary: Story = {
 //   args: {
-//     label: "Splash",
+//     label: "MilestoneForm",
 //   },
-// };
 
 // export const Large: Story = {
 //   args: {

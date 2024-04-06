@@ -1,15 +1,12 @@
 "use client";
 
-import {
-  CheckBadgeIcon,
-  EyeIcon,
-  MapPinIcon,
-} from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { usePrivy } from "@privy-io/react-auth";
+import { BadgeCheckIcon, EyeIcon, MapPinIcon } from "lucide-react";
 
 import { IProposalCardProps } from "@/app/types";
+
 import { truncateDescription } from "../../utils/text";
 
 const ProposalCard = ({
@@ -20,38 +17,12 @@ const ProposalCard = ({
 }: IProposalCardProps) => {
   const router = useRouter();
   const { user } = usePrivy();
-  const [isValidAllocator, setIsValidAllocator] = useState(false);
   const [votesCastedToRecipient, setVotesCastedToRecipient] =
     useState<number>(0);
 
-  // useEffect(() => {
-  //   const load = async () => {
-  //     setVotesCastedToRecipient(
-  //       await getVoiceCreditsCastByAllocatorToRecipient(
-  //         user?.wallet?.address!,
-  //         proposal.allo_recipient_id!
-  //       )
-  //     );
-  //   };
-
-  //   load();
-  // }, [proposal.allo_recipient_id, user?.wallet?.address]);
-
-  // useEffect(() => {
-  //   const getAllocator = async () => {
-  //     const isValid: any = await strategyContract.read.isValidAllocator([
-  //       user?.wallet?.address!,
-  //     ]);
-
-  //     console.log("isValid2", isValid);
-
-  //     if (isValid as boolean === true) {
-  //       setIsValidAllocator(true);
-  //     }
-  //   };
-
-  //   getAllocator();
-  // }), [user?.wallet?.address];
+  function handleUpVote() {
+    setVotesCastedToRecipient((prev) => prev + 1);
+  }
 
   if (!user) return null;
 
@@ -71,7 +42,7 @@ const ProposalCard = ({
           {showStatus && (
             <div className="ml-2 text-xs font-normal flex">
               {proposal.approved ? (
-                <CheckBadgeIcon width={18} color="green" />
+                <BadgeCheckIcon width={18} color="green" />
               ) : (
                 <>
                   <EyeIcon width={18} color="orange" />
@@ -119,33 +90,5 @@ const ProposalCard = ({
     </div>
   );
 };
-
-// export const ProposalCard = ({
-//   title,
-//   voices,
-//   location,
-//   description,
-//   owner,
-// }) => {
-//   return (
-//     <div className="w-full flex flex-col p-4 rounded-2xl bg-white gap-2">
-//       <div className="flex flex-row items-center justify-between">
-//         <h1 className="font-semibold">{title}</h1>
-//         <div>
-//           <span>{voices}</span>
-//           <Image src="/thumbprint.svg" width={20} height={20} alt="vote" />
-//         </div>
-//       </div>
-//       <div className="flex flex-row gap-1 items-center">
-//         <Image src="/location.svg" width={20} height={20} alt="location" />
-//         <span className="text-xs font-light">{location}</span>
-//       </div>
-//       <p className="text-xs text-[#555]">{description}</p>
-//       <p className="text-xs text-blue-500 underline underline-offset-2">
-//         {owner}
-//       </p>
-//     </div>
-//   );
-// };
 
 export default ProposalCard;

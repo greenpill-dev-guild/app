@@ -1,55 +1,56 @@
 import React from "react";
+import Select from "react-tailwindcss-select";
+import { SelectProps } from "react-tailwindcss-select/dist/components/type";
 
-interface FormSelectProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
-  size?: "small" | "medium" | "large";
-  /**
-   * FormSelect contents
-   */
+import { XIcon } from "lucide-react";
+
+export interface SelectOption {
   label: string;
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void;
+  value: string;
 }
 
-/**
- * Primary UI component for user interaction
- */
+interface FormSelectProps extends SelectProps {
+  label: string;
+  placeholder: string;
+  selected: SelectOption[];
+  onRemove: (value: string) => void;
+  helperText?: string;
+}
+
 export const FormSelect = ({
-  primary = false,
-  size = "medium",
-  backgroundColor,
   label,
+  selected,
+  onRemove,
+  helperText,
   ...props
 }: FormSelectProps) => {
-  const mode = primary
-    ? "storybook-button--primary"
-    : "storybook-button--secondary";
   return (
-    <button
-      type="button"
-      className={["storybook-button", `storybook-button--${size}`, mode].join(
-        " "
+    <div>
+      <label className="block text-sm font-bold text-slate-600 mb-2">
+        {label}
+      </label>
+      {selected.length > 0 &&
+        selected.map((option) => (
+          <div
+            key={option.value}
+            className="border border-slate-400 rounded leading-8 text-xs px-2 font-bold inline-block mb-3"
+          >
+            <input type="hidden" value={option.value} />
+            <div className="flex">
+              {option?.label}
+              <XIcon
+                onClick={() => onRemove(option.value)}
+                className="h-3 ml-2 mt-2.5 cursor-pointer"
+              />
+            </div>
+          </div>
+        ))}
+      {props.options.length > 0 && (
+        <>
+          <Select {...props} primaryColor={"blue"} value={null} />
+          <p className="text-sm center italic mt-6">{helperText}</p>
+        </>
       )}
-      {...props}
-    >
-      {label}
-      <style jsx>{`
-        button {
-          background-color: ${backgroundColor};
-        }
-      `}</style>
-    </button>
+    </div>
   );
 };

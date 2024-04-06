@@ -1,17 +1,21 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { usePrivy } from "@privy-io/react-auth";
-import { getSupabaseClient } from "../../../../lib/supabase";
-import { Web3Storage, CIDString, Web3File } from "web3.storage";
-import { storeImage } from "./Gallery";
+
 import Image from "next/legacy/image";
 import { useTranslations } from "next-intl";
+import { usePrivy } from "@privy-io/react-auth";
+import React, { useState, useEffect } from "react";
+import { Web3Storage, CIDString } from "web3.storage";
+
+import { getSupabaseClient } from "../../../../lib/supabase";
+
+import { storeImage } from "./Gallery";
 
 export const ImageUploader = () => {
   const { user } = usePrivy();
+
   const [files, setFiles] = useState<CIDString>();
-  const [storageClient, setStorageClient] = useState<Web3Storage>();
   const [isUploading, setIsUploading] = useState(false);
+  const [storageClient, setStorageClient] = useState<Web3Storage>();
 
   function getAccessToken() {
     // If you're just testing, you can paste in a token

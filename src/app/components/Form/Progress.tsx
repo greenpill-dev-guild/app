@@ -1,55 +1,41 @@
 import React from "react";
 
 interface FormProgressProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
-  size?: "small" | "medium" | "large";
-  /**
-   * FormProgress contents
-   */
-  label: string;
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void;
+  currentStep: number;
+  steps: string[];
 }
 
-/**
- * Primary UI component for user interaction
- */
-export const FormProgress = ({
-  primary = false,
-  size = "medium",
-  backgroundColor,
-  label,
-  ...props
-}: FormProgressProps) => {
-  const mode = primary
-    ? "storybook-button--primary"
-    : "storybook-button--secondary";
+export const FormProgress = ({ currentStep, steps }: FormProgressProps) => {
   return (
-    <button
-      type="button"
-      className={["storybook-button", `storybook-button--${size}`, mode].join(
-        " "
-      )}
-      {...props}
-    >
-      {label}
-      <style jsx>{`
-        button {
-          background-color: ${backgroundColor};
-        }
-      `}</style>
-    </button>
+    <ul className="relative flex flex-row gap-x-2">
+      {steps.map((step, index) => (
+        <li className="flex flex-col justify-center flex-1 group">
+          <div className="w-full inline-flex items-center text-sm align-middle">
+            <span className="grid place-items-center w-8 h-8 bg-gray-300 font-medium text-gray-800 rounded-full">
+              {currentStep >= index + 1 ? (
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              ) : (
+                index + 1
+              )}
+            </span>
+            <div className="ms-2 w-full h-px flex-1 bg-gray-200 group-last:hidden"></div>
+          </div>
+          <div className="mt-3">
+            <span className="block font-medium text-gray-800">{step}</span>
+          </div>
+        </li>
+      ))}
+    </ul>
   );
 };

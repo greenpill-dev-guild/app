@@ -1,55 +1,27 @@
 import React from "react";
 
 interface FormInfoProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
-  size?: "small" | "medium" | "large";
-  /**
-   * FormInfo contents
-   */
-  label: string;
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void;
+  title: string;
+  info: string;
+  variant: "primary" | "secondary" | "tertiary";
 }
 
-/**
- * Primary UI component for user interaction
- */
-export const FormInfo = ({
-  primary = false,
-  size = "medium",
-  backgroundColor,
-  label,
-  ...props
-}: FormInfoProps) => {
-  const mode = primary
-    ? "storybook-button--primary"
-    : "storybook-button--secondary";
+const variants = {
+  primary: "bg-blue-100 text-blue-700",
+  secondary: "bg-green-100 text-green-700",
+  tertiary: "bg-yellow-100 text-yellow-700",
+};
+
+export const FormInfo = ({ title, info, variant, ...props }: FormInfoProps) => {
+  const variantClasses = variants[variant];
+
   return (
-    <button
-      type="button"
-      className={["storybook-button", `storybook-button--${size}`, mode].join(
-        " "
-      )}
+    <div
+      className={`${variantClasses} p-4 rounded-lg mb-4 min-h-36`}
       {...props}
     >
-      {label}
-      <style jsx>{`
-        button {
-          background-color: ${backgroundColor};
-        }
-      `}</style>
-    </button>
+      <h3 className="text-lg font-bold text-slate-600">{title}</h3>
+      <p className="text-sm text-slate-400">{info}</p>
+    </div>
   );
 };
