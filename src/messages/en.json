@@ -83,8 +83,8 @@
     "totalBudget": "Total Budget"
   },
   "Navigation": {
-    "link1": "My Proposal",
-    "link2": "Proposals",
+    "link1": "Proposals",
+    "link2": "Create",
     "link3": "Profile"
   },
   "Settings": {
