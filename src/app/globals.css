@@ -9,11 +9,14 @@
 }
 
 .brand-bg-color {
-  background-color: rgb(203, 229, 241)
+  background-color: rgb(203, 229, 241);
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  @apply px-4;
+  @apply py-8;
+  width: 100dvw;
+  height: 100dvh;
 }
 
 .select-search-container:not(.select-search-has-focus) .select-search-select {

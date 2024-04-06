@@ -88,7 +88,11 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages} locale={locale}>
           <Web3Provider>
             <ProposalsProvider>
-              {children}
+              <main
+                className={`flex h-[calc(100dvh-3.5rem)] overflow-hidden max-h-[calc(100dvh-3.5rem)] overflow-y-contain`}
+              >
+                {children}
+              </main>
               <Navbar />
             </ProposalsProvider>
           </Web3Provider>

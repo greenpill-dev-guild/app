@@ -1,6 +1,6 @@
 export const LoadingSkeleton = () => {
   return (
-    <div className="text-center">
+    <div className="text-center w-full h-full grid place-items-center">
       <div role="status">
         <svg
           aria-hidden="true"
