@@ -8,7 +8,7 @@ import { unstable_setRequestLocale } from "next-intl/server";
 
 import { PrelineScript } from "@/app/utils/preline-script";
 
-import { WagmiProvider } from "@/app/providers/WagmiProvider";
+import { Web3Provider } from "@/app/providers/Web3Provider";
 import { ProposalsProvider } from "@/app/providers/ProposalProvider";
 
 import { Navbar } from "@/app/components/Navbar";
@@ -84,14 +84,14 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={inter.className + ""}>
+      <body className={inter.className}>
         <NextIntlClientProvider messages={messages} locale={locale}>
-          <WagmiProvider>
+          <Web3Provider>
             <ProposalsProvider>
               {children}
               <Navbar />
             </ProposalsProvider>
-          </WagmiProvider>
+          </Web3Provider>
         </NextIntlClientProvider>
         <PrelineScript />
       </body>
