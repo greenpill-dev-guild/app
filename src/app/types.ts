@@ -1,45 +1,16 @@
-export type TProposal = {
-  id: string;
-  title: string | null;
-  location: string | null;
-  summary: string | null;
-  timeline: string | null;
-  affected_locations: string | null;
-  community_problem: string | null;
-  proposed_solution: string | null;
-  minimum_budget: number | null;
-  key_players: string | null;
-};
-
 export type TCreateProposal = {
   id: string;
   title: string | null;
   location: string | null;
-  summary: string | null;
-  timeline: string | null;
-  affected_locations: string | null;
   community_problem: string | null;
   proposed_solution: string | null;
-  sustainability: string | null;
   minimum_budget: number | null;
-  key_players: string | null;
-  milestones: TMilestone[] | null;
-};
-
-export type TCreateDraft = {
-  id: string;
-  title: string | null;
-  location: string | null;
-  summary: string | null;
   timeline: string | null;
-  affected_locations: string | null;
-  community_problem: string | null;
-  proposed_solution: string | null;
-  sustainability: string | null;
-  minimum_budget: number | null;
+  start_date?: Date | null;
+  end_date?: Date | null;
   key_players: string | null;
+  banner_image: string | null;
   milestones: TMilestone[] | null;
-  form_step: number | null;
 };
 
 export type TSummaryProposal = {
@@ -55,8 +26,6 @@ export type TSummaryProposal = {
   location: string | null;
   summary: string | null;
   collaborators: TCollaborator[] | null;
-  allo_recipient_id: string | null;
-  allo_anchor_address: string | null;
 };
 
 export type TFullProposal = TSummaryProposal & {
@@ -67,6 +36,9 @@ export type TFullProposal = TSummaryProposal & {
   sustainability: string | null;
   minimum_budget: number | null;
   key_players: string | null;
+  start_date?: Date | null;
+  end_date?: Date | null;
+  banner_image: string | null;
   project_milestones: TMilestone[] | null;
 };
 
@@ -77,8 +49,9 @@ type TCollaborator = {
 };
 
 export type TMilestone = {
-  title: string;
+  name: string;
   budget: number;
+  description: string;
 };
 
 // todo => note: why are we using this User and not the Collaborator type?
@@ -94,32 +67,10 @@ export type TUser = {
   email: string | null;
 };
 
-export type TPrivyUser = {};
-
-export interface IContractDetails {
-  [key: number]: {
-    proxy: `0x${string}`;
-    implementation?: `0x${string}`;
-    abi: any;
-  };
-}
-
-export interface IStrategyDetails {
-  [key: number]: {
-    poolId: number;
-    address: `0x${string}`;
-    abi: any;
-  };
-}
-
 export interface IProposalProps {
   showStatus?: boolean;
   showAction?: boolean;
   showAllocation?: boolean;
-}
-
-export interface IDraftListProps {
-  drafts: TCreateDraft[];
 }
 
 export interface IProposalListProps {
@@ -135,41 +86,6 @@ export interface IProposalCardProps {
   showAllocation?: boolean;
 }
 
-export interface ICartItemProps {
-  proposal: TSummaryProposal;
-  amount: number;
-}
-
-export interface ICartContextProps {
-  cartItems: string[];
-  addItemToCart: (itemId: string) => void;
-  deleteItemFromCart: (itemId: string) => void;
-  isInCart: (itemId: string) => boolean;
-  allocations: IAllocationParams;
-  handleAllocationChange: (recipientId: string, value: number) => void;
-}
-
-export interface IChainIndex {
-  [key: string]: any;
-}
-
-export type TDraftProposal = {
-  id: string;
-  author_id: string;
-  title: string | null;
-  location: string | null;
-  summary: string | null;
-  timeline: string | null;
-  affected_locations: string | null;
-  community_problem: string | null;
-  proposed_solution: string | null;
-  sustainability: string | null;
-  minimum_budget: number | null;
-  key_players: string | null;
-  form_step: number | null;
-  collaborators: TCollaborator[] | null;
-};
-
 export interface IEditProposalProps {
   proposal: TFullProposal;
   proposalId: string;
@@ -179,19 +95,4 @@ export interface IEditProposalProps {
 
 export interface IMilestoneProps {
   milestones?: TMilestone[] | null;
-}
-
-export interface IRow {
-  key: string;
-  milestone?: TMilestone;
-}
-
-export interface INavbarLinkProps {
-  children: React.ReactNode;
-  path: string;
-  setOverlay: Function;
-}
-
-export interface IAllocationParams {
-  [key: string]: number;
 }
