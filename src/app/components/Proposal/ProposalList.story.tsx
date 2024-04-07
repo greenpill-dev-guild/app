@@ -37,8 +37,6 @@ export const Primary: Story = {
           profile_image_url: "https://via.placeholder.com/150",
           id: "1",
         },
-        allo_recipient_id: "1",
-        allo_anchor_address: "0x1234567890",
         collaborators: [
           {
             name: "Collaborator 1",
@@ -74,8 +72,6 @@ export const Primary: Story = {
           profile_image_url: "https://via.placeholder.com/150",
           id: "1",
         },
-        allo_recipient_id: "1",
-        allo_anchor_address: "0x1234567890",
         collaborators: [
           {
             name: "Collaborator 1",

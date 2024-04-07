@@ -9,7 +9,7 @@ export const FormProgress = ({ currentStep, steps }: FormProgressProps) => {
   return (
     <ul className="relative flex flex-row gap-x-2">
       {steps.map((step, index) => (
-        <li className="flex flex-col justify-center flex-1 group">
+        <li key={step} className="flex flex-col justify-center flex-1 group">
           <div className="w-full inline-flex items-center text-sm align-middle">
             <span className="grid place-items-center w-8 h-8 bg-gray-300 font-medium text-gray-800 rounded-full">
               {currentStep >= index + 1 ? (

@@ -84,16 +84,18 @@ export const MilestoneList: React.FC<MilestoneListProps> = ({}) => {
       <ul>
         {milestones.size > 0 &&
           [...milestones.entries()].map(([id, milestone]) => (
-            <MilestoneForm
-              {...milestone}
-              id={id}
-              onRemove={handleRemoveMilestone}
-              onNameChange={(name) => handleNameChange(id, name)}
-              onBudgetChange={(budget) => handleBudgetChange(id, budget)}
-              onDescriptionChange={(description) =>
-                handleDescriptionChange(id, description)
-              }
-            />
+            <li key={id}>
+              <MilestoneForm
+                {...milestone}
+                id={id}
+                onRemove={handleRemoveMilestone}
+                onNameChange={(name) => handleNameChange(id, name)}
+                onBudgetChange={(budget) => handleBudgetChange(id, budget)}
+                onDescriptionChange={(description) =>
+                  handleDescriptionChange(id, description)
+                }
+              />
+            </li>
           ))}
       </ul>
       <Button
