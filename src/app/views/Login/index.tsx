@@ -7,7 +7,7 @@ import React, { useState, useEffect } from "react";
 
 import { getSupabaseClient } from "../../../../lib/supabase";
 
-import { Splash } from "../../components/Splash";
+import { Splash } from "@/app/components/Splash";
 
 const supabaseAuth = async (address: string, userId: string) => {
   await fetch("/api/auth/login", {
@@ -24,7 +24,7 @@ const supabaseAuth = async (address: string, userId: string) => {
 
 export const Login = () => {
   const router = useRouter();
-  const t = useTranslations("Sign-In");
+  const t = useTranslations("Login");
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   const { login, authenticated, user, ready } = usePrivy();
@@ -64,7 +64,7 @@ export const Login = () => {
       <Splash
         login={startLogin}
         isLoggingIn={isLoggingIn}
-        buttonLabel={t("signInButton")}
+        buttonLabel={t("loginButton")}
       />
     </main>
   );

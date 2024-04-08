@@ -6,9 +6,14 @@ import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 
 import { getSupabaseClient } from "../../../../lib/supabase";
 
-import { TCreateProposal, IEditProposalProps } from "@/app/types";
+import { TCreateProposal, TFullProposal } from "@/app/types";
 
-interface EditProposalViewProps extends IEditProposalProps {}
+interface EditProposalViewProps {
+  proposal: TFullProposal;
+  proposalId: string;
+  setIsEditing: Function;
+  reloadData: Function;
+}
 
 export const EditProposalView: React.FC<EditProposalViewProps> = ({
   reloadData,
@@ -23,22 +28,22 @@ export const EditProposalView: React.FC<EditProposalViewProps> = ({
   const methods = useForm<TCreateProposal>({
     mode: "onBlur",
     defaultValues: {
-      title: proposal.title,
+      name: proposal.name,
       location: proposal.location,
-      banner_image: proposal.banner_image,
+      problem: proposal.problem,
+      solution: proposal.solution,
+      budget: proposal.budget,
       start_date: proposal.start_date,
-      community_problem: proposal.community_problem,
-      proposed_solution: proposal.proposed_solution,
-      minimum_budget: proposal.minimum_budget,
-      key_players: proposal.key_players,
-      timeline: proposal.timeline,
-      milestones: proposal.project_milestones,
+      end_date: proposal.end_date,
+      community: proposal.community,
+      banner_image: proposal.banner_image,
+      milestones: proposal.milestones,
     },
   });
 
   const {
     register,
-    formState,
+    // formState,
     handleSubmit,
     formState: { errors, isSubmitting, isSubmitted },
   } = methods;
@@ -46,19 +51,20 @@ export const EditProposalView: React.FC<EditProposalViewProps> = ({
   const onSubmit: SubmitHandler<TCreateProposal> = async (formData) => {
     try {
       const supabase = await getSupabaseClient();
+
       const { error } = await supabase
         .from("proposals")
         .update({
-          title: formData.title,
-          banner_image: formData.banner_image,
-          timeline: formData.timeline,
+          name: formData.name,
           location: formData.location,
+          problem: formData.problem,
+          solution: formData.solution,
+          budget: formData.budget,
           start_date: formData.start_date,
-          community_problem: formData.community_problem,
-          proposed_solution: formData.proposed_solution,
-          minimum_budget: formData.minimum_budget,
-          key_players: formData.key_players,
-          project_milestones: formData.milestones,
+          end_date: formData.end_date,
+          community: formData.community,
+          banner_image: formData.banner_image,
+          milestones: formData.milestones,
         })
         .eq("id", proposalId);
       setIsEditing(false);
@@ -76,13 +82,12 @@ export const EditProposalView: React.FC<EditProposalViewProps> = ({
             Cancel Edit
           </span>
           <input
-            {...register("title", { required: t("titleValidationMessage") })}
+            {...register("name", { required: t("titleValidationMessage") })}
             className="w-full border border-slate-300 rounded h-10 pl-2 mt-4"
             placeholder={t("title")}
           />
           <span className="text-red-600 text-xs">
-            {" "}
-            {errors.title && errors.title.message}
+            {errors.name && errors.name.message}
           </span>
         </div>
 
@@ -95,7 +100,6 @@ export const EditProposalView: React.FC<EditProposalViewProps> = ({
           placeholder={t("location")}
         />
         <span className="text-red-600 text-xs">
-          {" "}
           {errors.location && errors.location.message}
         </span>
 
@@ -108,7 +112,6 @@ export const EditProposalView: React.FC<EditProposalViewProps> = ({
           })}
         />
         <span className="text-red-600 text-xs">
-          {" "}
           {errors.banner_image && errors.banner_image.message}
         </span>
 
@@ -121,7 +124,6 @@ export const EditProposalView: React.FC<EditProposalViewProps> = ({
           })}
         />
         <span className="text-red-600 text-xs">
-          {" "}
           {errors.start_date && errors.start_date.message}
         </span>
 
@@ -129,71 +131,52 @@ export const EditProposalView: React.FC<EditProposalViewProps> = ({
         <textarea
           className="w-full border border-slate-300 rounded h-20 pl-2 mb-2"
           placeholder={t("communityProblemPlaceholder")}
-          {...register("community_problem", {
+          {...register("problem", {
             required: t("communityProblemValidationMessage"),
           })}
         />
         <span className="text-red-600 text-xs">
-          {" "}
-          {errors.community_problem && errors.community_problem.message}
+          {errors.problem && errors.problem.message}
         </span>
 
         <label className="text-xs">{t("proposedSolutionPlaceholder")}</label>
         <textarea
           className="w-full border border-slate-300 rounded h-20 pl-2 mb-2"
           placeholder={t("proposedSolutionPlaceholder")}
-          {...register("proposed_solution", {
+          {...register("solution", {
             required: t("proposedSolutionValidationMessage"),
           })}
         />
         <span className="text-red-600 text-xs">
-          {" "}
-          {errors.proposed_solution && errors.proposed_solution.message}
+          {errors.solution && errors.solution.message}
         </span>
 
         <label className="text-xs">{t("minimumBudgetPlaceholder")}</label>
         <input
           className="w-full border border-slate-300 rounded h-10 pl-2 mb-2"
           placeholder={t("minimumBudgetPlaceholder")}
-          {...register("minimum_budget", {
+          {...register("budget", {
             required: t("minimumBudgetValidationMessage"),
           })}
         />
         <span className="text-red-600 text-xs">
-          {" "}
-          {errors.minimum_budget && errors.minimum_budget.message}
+          {errors.budget && errors.budget.message}
         </span>
 
         <label className="text-xs">{t("keyPlayersPlaceholder")}</label>
         <input
           className="w-full border border-slate-300 rounded h-10 pl-2 mb-2"
           placeholder={t("keyPlayersPlaceholder")}
-          {...register("key_players", {
+          {...register("community", {
             required: t("keyPlayersValidationMessage"),
           })}
         />
         <span className="text-red-600 text-xs">
-          {" "}
-          {errors.key_players && errors.key_players.message}
+          {errors.community && errors.community.message}
         </span>
-
-        <label className="text-xs">{t("timelinePlaceholder")}</label>
-        <input
-          className="w-full border border-slate-300 rounded h-10 pl-2 mb-2"
-          placeholder={t("timelinePlaceholder")}
-          {...register("timeline", {
-            required: t("timelineValidationMessage"),
-          })}
-        />
-        <span className="text-red-600 text-xs">
-          {" "}
-          {errors.timeline && errors.timeline.message}
-        </span>
-
         <label className="text-xs mt-4 block">{t("heading6")}</label>
-        {/* <MilestoneForm milestones={proposal.project_milestones} /> */}
+        {/* <MilestoneForm milestones={proposal.milestones} /> */}
         <span className="text-red-600 text-xs">
-          {" "}
           {errors.milestones && errors.milestones.message}
         </span>
 

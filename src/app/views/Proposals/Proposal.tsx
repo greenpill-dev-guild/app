@@ -16,13 +16,11 @@ import { ProposalContext } from "@/app/providers/ProposalProvider";
 
 import { EditProposalView } from "./EditProposal";
 
-export default function ProposalView({
-  params,
-}: {
+interface ProposalViewProps {
   params: { slug: string; locale: string };
-}) {
-  // unstable_setRequestLocale(params.locale);
+}
 
+export const ProposalView: React.FC<ProposalViewProps> = ({ params }) => {
   const { user } = usePrivy();
   const [proposal, setProposal] = useState<TFullProposal>();
   const [isAuthor, setIsAuthor] = useState<boolean>(false);
@@ -47,13 +45,11 @@ export default function ProposalView({
   }, [user, proposal?.author?.id]);
 
   useEffect(() => {
-    if (proposal && proposal.project_milestones) {
+    if (proposal && proposal.milestones) {
       let calculatedTotalBudget = 0;
-      Object.values(proposal.project_milestones).forEach(
-        (milestone: TMilestone) => {
-          calculatedTotalBudget += Number(milestone.budget);
-        }
-      );
+      Object.values(proposal.milestones).forEach((milestone: TMilestone) => {
+        calculatedTotalBudget += Number(milestone.budget);
+      });
       setTotalBudget(calculatedTotalBudget);
     }
   }, [proposal]);
@@ -77,14 +73,12 @@ export default function ProposalView({
             <Link className="text-sky-600" href="/proposals">
               {t("heading")}
             </Link>{" "}
-            / {proposal?.title}{" "}
+            / {proposal?.name}{" "}
             {isAuthor && (
-              <>
-                <PencilLineIcon
-                  onClick={() => setIsEditing(true)}
-                  className="h-5 inline-block ml-2"
-                />
-              </>
+              <PencilLineIcon
+                onClick={() => setIsEditing(true)}
+                className="h-5 inline-block ml-2"
+              />
             )}
           </div>
           <div className="text-sm align-middle mb-4">
@@ -92,7 +86,7 @@ export default function ProposalView({
           </div>
           <div className="text-sm mb-4">
             <UserCircleIcon className="h-4 inline-block" />{" "}
-            {proposal?.author?.name + " " + proposal?.author?.family_name}
+            {proposal?.author?.username}
           </div>
           <div>
             <span className="text-sm">
@@ -101,49 +95,30 @@ export default function ProposalView({
                   <UsersIcon className="h-4 inline-block" />
                 )}{" "}
               {proposal?.collaborators &&
-                proposal?.collaborators
-                  .map((user) => user.name + " " + user.family_name)
-                  .join(", ")}
+                proposal?.collaborators.map((user) => user.username).join(", ")}
             </span>
-            <h3 className="font-bold mt-6 text-sm">{t("summary")}</h3>
-            <p className="text-sm leading-1 mt-4">{proposal?.summary}</p>
-
-            <h3 className="font-bold mt-6 text-sm">{t("locationsAffected")}</h3>
-            <p className="text-sm leading-1 mt-2">
-              {proposal?.affected_locations}
-            </p>
-
             <h3 className="font-bold mt-6 text-sm">{t("communityProblem")}</h3>
-            <p className="text-sm leading-1 mt-2">
-              {proposal?.community_problem}
-            </p>
+            <p className="text-sm leading-1 mt-2">{proposal?.problem}</p>
 
             <h3 className="font-bold mt-6 text-sm">{t("proposedSolution")}</h3>
-            <p className="text-sm leading-1 mt-2">
-              {proposal?.proposed_solution}
-            </p>
-
-            <h3 className="font-bold mt-6 text-sm">{t("sustainability")}</h3>
-            <p className="text-sm leading-1 mt-2">{proposal?.sustainability}</p>
+            <p className="text-sm leading-1 mt-2">{proposal?.solution}</p>
 
             <h3 className="font-bold mt-6 text-sm">{t("keyPlayers")}</h3>
-            <p className="text-sm leading-1 mt-2">{proposal?.key_players}</p>
+            <p className="text-sm leading-1 mt-2">{proposal?.community}</p>
           </div>
-          {proposal?.project_milestones && (
+          {proposal?.milestones && (
             <h3 className="font-bold mt-6 mb-5">{t("milestones")}</h3>
           )}
-          {proposal?.project_milestones &&
-            Object.values(proposal.project_milestones).map(
-              (milestone: TMilestone) => (
-                <div key={milestone.name} className="mt-3 mb-3">
-                  {milestone.name}: ${milestone.budget}
-                </div>
-              )
-            )}
+          {proposal?.milestones &&
+            Object.values(proposal.milestones).map((milestone: TMilestone) => (
+              <div key={milestone.name} className="mt-3 mb-3">
+                {milestone.name}: ${milestone.budget}
+              </div>
+            ))}
           <div className="italic mt-6">
-            {t("minimumBudget") + ": $" + proposal?.minimum_budget}
+            {t("minimumBudget") + ": $" + proposal?.budget}
           </div>
-          {proposal?.project_milestones && (
+          {proposal?.milestones && (
             <div className="italic mt-6">
               {t("totalBudget") + ": $" + totalBudget}
             </div>
@@ -152,4 +127,4 @@ export default function ProposalView({
       )}
     </>
   );
-}
+};
