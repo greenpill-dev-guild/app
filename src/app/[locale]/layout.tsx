@@ -89,7 +89,7 @@ export default async function RootLayout({
           <Web3Provider>
             <ProposalsProvider>
               <main
-                className={`flex h-[calc(100dvh-3.5rem)] overflow-hidden max-h-[calc(100dvh-3.5rem)] overflow-y-contain`}
+                className={`h-[calc(100dvh-4.5rem)] overflow-hidden max-h-[calc(100dvh-4.5rem)] overflow-y-contain px-4 py-8`}
               >
                 {children}
               </main>

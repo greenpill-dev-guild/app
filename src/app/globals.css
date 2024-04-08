@@ -8,15 +8,15 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-.brand-bg-color {
-  background-color: rgb(203, 229, 241);
-}
-
 body {
-  @apply px-4;
-  @apply py-8;
   width: 100dvw;
   height: 100dvh;
+  scrollbar-width: none;
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 .select-search-container:not(.select-search-has-focus) .select-search-select {
