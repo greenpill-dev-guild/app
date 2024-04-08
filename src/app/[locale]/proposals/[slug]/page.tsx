@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import ProposalView from "@/app/views/Proposals/Proposal";
+import { ProposalView } from "@/app/views/Proposals/Proposal";
 
 export default function ProposalPage({
   params,

@@ -9,5 +9,5 @@ interface ProposalParams {
 export default function ProposalsPage(props: { params: ProposalParams }) {
   unstable_setRequestLocale(props.params.locale);
 
-  return <ProposalsView showAction={true} />;
+  return <ProposalsView />;
 }
