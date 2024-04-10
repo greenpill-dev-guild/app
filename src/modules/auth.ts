@@ -1,5 +1,6 @@
-import { jwtVerify, SignJWT, JWTPayload } from "jose";
 import { nanoid } from "nanoid";
+import { jwtVerify, SignJWT, JWTPayload } from "jose";
+
 export const generateAccessToken = async (address: string, userId: string) => {
   return await new SignJWT({ address, sub: userId, aud: "authenticated" })
     .setProtectedHeader({
