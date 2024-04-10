@@ -6,7 +6,7 @@ import { usePrivy } from "@privy-io/react-auth";
 import React, { useState, useEffect } from "react";
 import { Web3Storage, CIDString } from "web3.storage";
 
-import { getSupabaseClient } from "../../../../lib/supabase";
+import { getSupabaseClient } from "@/modules/supabase";
 
 import { storeImage } from "./Gallery";
 

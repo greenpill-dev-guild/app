@@ -1,10 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
-import {
-  generateAccessToken,
-  generateRefreshToken,
-} from "../../../../../lib/auth";
+import { generateAccessToken, generateRefreshToken } from "@/modules/auth";
 
 // Create a single supabase client with admin rights
 const supabaseAdmin = createClient(
@@ -29,7 +26,7 @@ export async function POST(request: Request) {
     id: userId,
     address,
   });
-  console.error(error);
+  console.error("Error Authernticating User", error);
   const response = NextResponse.json(
     {
       message: "Authentication Successful",
