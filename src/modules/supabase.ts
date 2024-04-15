@@ -3,7 +3,7 @@ import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
 import { Database } from "../types/supabase";
 
-let supabase: SupabaseClient | null = null;
+let supabase: SupabaseClient<Database> | null = null;
 
 export const getSupabaseClient = async () => {
   const token = getCookie("supabase-access-token");

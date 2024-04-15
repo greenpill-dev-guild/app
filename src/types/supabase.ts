@@ -40,22 +40,22 @@ export type Database = {
           budget: number;
           description: string;
           id: string;
-          proposal_id: string | null;
-          title: string;
+          name: string;
+          proposal_id: string;
         };
         Insert: {
           budget: number;
           description: string;
           id?: string;
-          proposal_id?: string | null;
-          title: string;
+          name: string;
+          proposal_id: string;
         };
         Update: {
           budget?: number;
           description?: string;
           id?: string;
-          proposal_id?: string | null;
-          title?: string;
+          name?: string;
+          proposal_id?: string;
         };
         Relationships: [
           {
@@ -69,14 +69,17 @@ export type Database = {
       };
       proposal_collaborators: {
         Row: {
+          id: Database["public"]["CompositeTypes"]["combined_id"];
           proposal_id: string;
           user_id: string | null;
         };
         Insert: {
+          id: Database["public"]["CompositeTypes"]["combined_id"];
           proposal_id: string;
           user_id?: string | null;
         };
         Update: {
+          id?: Database["public"]["CompositeTypes"]["combined_id"];
           proposal_id?: string;
           user_id?: string | null;
         };
@@ -103,21 +106,21 @@ export type Database = {
           id: string;
           proposal_id: string;
           user_id: string;
-          vote_type: boolean;
+          vote_type: boolean | null;
         };
         Insert: {
           created_at?: string;
           id?: string;
           proposal_id: string;
           user_id: string;
-          vote_type: boolean;
+          vote_type?: boolean | null;
         };
         Update: {
           created_at?: string;
           id?: string;
           proposal_id?: string;
           user_id?: string;
-          vote_type?: boolean;
+          vote_type?: boolean | null;
         };
         Relationships: [
           {
@@ -146,7 +149,6 @@ export type Database = {
           end_date: string;
           id: string;
           location: string;
-          milestones: Json | null;
           name: string;
           problem: string;
           solution: string;
@@ -161,7 +163,6 @@ export type Database = {
           end_date: string;
           id?: string;
           location: string;
-          milestones?: Json | null;
           name: string;
           problem: string;
           solution: string;
@@ -176,7 +177,6 @@ export type Database = {
           end_date?: string;
           id?: string;
           location?: string;
-          milestones?: Json | null;
           name?: string;
           problem?: string;
           solution?: string;
@@ -233,39 +233,38 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
-      get_proposal_with_collaborators: {
+      get_proposal: {
         Args: {
           proposal_id: string;
         };
         Returns: {
-          title: string;
-          author: Json;
+          id: string;
+          author_id: string;
+          name: string;
           location: string;
-          summary: string;
-          affected_locations: string;
-          community_problem: string;
-          proposed_solution: string;
-          minimum_budget: number;
-          key_players: string;
-          timeline: string;
+          problem: string;
+          solution: string;
+          budget: number;
+          start_date: string;
+          end_date: string;
           collaborators: Json[];
-          approved: boolean;
-          allo_recipient_id: string;
-          allo_anchor_address: string;
+          community: string;
+          banner_image: string;
+          milestones: Json[];
+          votes: Json[];
         }[];
       };
-      get_proposals_with_collaborators: {
+      get_proposals: {
         Args: Record<PropertyKey, never>;
         Returns: {
           id: string;
-          title: string;
-          author: Json;
+          name: string;
           location: string;
-          summary: string;
-          collaborators: Json[];
-          approved: boolean;
-          allo_recipient_id: string;
-          allo_anchor_address: string;
+          problem: string;
+          start_date: string;
+          end_date: string;
+          banner_image: string;
+          votes: Json[];
         }[];
       };
     };
