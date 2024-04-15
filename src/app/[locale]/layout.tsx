@@ -1,6 +1,7 @@
 import "../globals.css";
 
 import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import { notFound } from "next/navigation";
 import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
@@ -9,7 +10,7 @@ import { unstable_setRequestLocale } from "next-intl/server";
 import { PrelineScript } from "@/app/utils/preline-script";
 
 import { Web3Provider } from "@/app/providers/Web3Provider";
-import { ProposalsProvider } from "@/app/providers/ProposalProvider";
+import { AppProvider } from "@/app/providers/AppProvider";
 
 import { Navbar } from "@/app/components/Navbar";
 
@@ -18,6 +19,8 @@ const APP_DEFAULT_TITLE = "Impact Voice App";
 const APP_TITLE_TEMPLATE = "%s - Impact Voice";
 const APP_DESCRIPTION =
   "Let your voice be heard, submit proposals for your community";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   applicationName: APP_NAME,
@@ -59,8 +62,6 @@ export const viewport: Viewport = {
   themeColor: "#FFFFFF",
 };
 
-const inter = Inter({ subsets: ["latin"] });
-
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "fr" }, { locale: "ee" }];
 }
@@ -87,14 +88,15 @@ export default async function RootLayout({
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <Web3Provider>
-            <ProposalsProvider>
+            <AppProvider>
               <main
-                className={`h-[calc(100dvh-4.5rem)] overflow-hidden max-h-[calc(100dvh-4.5rem)] overflow-y-contain px-4 py-8`}
+                className={`h-[calc(100dvh-4.5rem)] overflow-hidden max-h-[calc(100dvh-4.5rem)] overflow-y-contain px-4 `}
               >
                 {children}
               </main>
               <Navbar />
-            </ProposalsProvider>
+              <Toaster />
+            </AppProvider>
           </Web3Provider>
         </NextIntlClientProvider>
         <PrelineScript />
