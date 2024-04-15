@@ -1,5 +1,4 @@
 import type { StorybookConfig } from "@storybook/nextjs";
-import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 
 const config: StorybookConfig = {
   stories: [
@@ -14,7 +13,6 @@ const config: StorybookConfig = {
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
     "@storybook/addon-mdx-gfm",
-    "storybook-addon-next-router",
   ],
   framework: {
     name: "@storybook/nextjs",
@@ -24,12 +22,5 @@ const config: StorybookConfig = {
     autodocs: "tag",
   },
   staticDirs: ["../public"],
-  webpackFinal: async (config, { configType }) => {
-    if (config.resolve?.plugins) {
-      config.resolve.plugins.push(new TsconfigPathsPlugin());
-    }
-
-    return config;
-  },
 };
 export default config;
