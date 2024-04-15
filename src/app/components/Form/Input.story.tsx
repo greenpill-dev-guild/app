@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { FormText } from "./Text";
+import { FormInput } from "./Input";
 
 export default {
-  title: "Components/Form/Text",
-  component: FormText,
+  title: "Components/Form/Input",
+  component: FormInput,
   argTypes: {},
-} as Meta<typeof FormText>;
+} as Meta<typeof FormInput>;
 
-type Story = StoryObj<typeof FormText>;
+type Story = StoryObj<typeof FormInput>;
 
 export const Primary: Story = {
   args: {},

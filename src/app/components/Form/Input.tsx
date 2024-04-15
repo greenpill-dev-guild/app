@@ -1,37 +1,33 @@
-import React, { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, forwardRef } from "react";
 
 interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   helperText?: string;
+  error?: string;
 }
 
-export const FormInput = ({
-  label,
-  helperText,
-  className,
-  ...props
-}: FormInputProps) => {
-  return (
-    <div className={className}>
-      <h3 className="text-lg font-bold text-slate-600">{label}</h3>
-      <input
-        className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-        {...props}
-      />
-      <label
-        htmlFor={props.id}
-        className="block text-sm font-medium mb-2 dark:text-white"
-      >
-        {props.placeholder}
+export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
+  ({ label, helperText, error, className, ...props }, ref) => (
+    <div className={`${className} flex flex-col gap-1 mb-2`}>
+      <label className="font-semibold text-slate-800" htmlFor={props.id}>
+        {label}
       </label>
       <input
         {...props}
-        className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-        aria-describedby="input-helper-text"
+        ref={ref}
+        className="py-3 px-4 block w-full border-slate-200 bg-white rounded-lg shadow-sm text-sm focus:border-teal-500 focus:ring-teal-500 disabled:opacity-50 disabled:pointer-events-none"
       />
-      <p className="text-sm text-gray-500 mt-2" id="input-helper-text">
-        {helperText}
+      <p
+        id={`${props.id}-input-helper-text`}
+        className={`
+          text-xs h-3
+          ${error ? "text-red-600" : "text-slate-600"}
+        `}
+      >
+        {helperText ?? error}
       </p>
     </div>
-  );
-};
+  )
+);
+
+FormInput.displayName = "FormInput";

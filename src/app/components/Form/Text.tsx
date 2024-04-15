@@ -1,34 +1,39 @@
-import React, { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes, forwardRef } from "react";
 
 interface FormTextProps extends InputHTMLAttributes<HTMLTextAreaElement> {
   rows: number;
   label: string;
+  error?: string;
+  className?: string;
   helperText?: string;
 }
 
-export const FormText = ({
-  rows,
-  label,
-  helperText,
-  ...props
-}: FormTextProps) => {
-  return (
-    <div>
-      <label
-        htmlFor={props.id}
-        className="block text-sm font-medium mb-2 dark:text-white"
-      >
-        {label}
-      </label>
-      <textarea
-        id={props.id}
-        className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
-        rows={rows}
-        {...props}
-      ></textarea>
-      <p className="text-xs text-gray-500 mt-2" id={`${props.id}-helper-text`}>
-        {helperText}
-      </p>
-    </div>
-  );
-};
+export const FormText = forwardRef<HTMLTextAreaElement, FormTextProps>(
+  ({ rows, label, error, className, helperText, ...props }, ref) => {
+    return (
+      <div className={`${className} flex flex-col gap-1 mb-2`}>
+        <label htmlFor={props.id} className="block text-sm font-medium mb-2">
+          <h3 className="text-lg font-bold text-slate-600">{label}</h3>
+        </label>
+        <textarea
+          ref={ref}
+          id={props.id}
+          className="py-3 px-4 block w-full border-slate-200 bg-white  rounded-lg text-sm focus:border-teal-500 focus:ring-teal-500 disabled:opacity-50 disabled:pointer-events-none"
+          rows={rows}
+          {...props}
+        ></textarea>
+        <p
+          className={`
+          text-xs h-3
+          ${error ? "text-red-600" : "text-slate-600"}
+        `}
+          id={`${props.id}-helper-text`}
+        >
+          {helperText ?? "error"}
+        </p>
+      </div>
+    );
+  }
+);
+
+FormText.displayName = "FormText";
