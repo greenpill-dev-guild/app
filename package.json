@@ -26,8 +26,10 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.51.2",
+    "react-hot-toast": "2.4.1",
     "react-spinners": "0.13.8",
     "react-tailwindcss-select": "^1.8.5",
+    "react-tailwindcss-datepicker": "1.6.6",
     "web3.storage": "^4.5.5",
     "viem": "2.9.15",
     "yup": "^1.4.0"
