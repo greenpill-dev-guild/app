@@ -7,8 +7,6 @@ import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 
-import { PrelineScript } from "@/app/utils/preline-script";
-
 import { Web3Provider } from "@/app/providers/Web3Provider";
 import { AppProvider } from "@/app/providers/AppProvider";
 
@@ -90,7 +88,7 @@ export default async function RootLayout({
           <Web3Provider>
             <AppProvider>
               <main
-                className={`h-[calc(100dvh-4.5rem)] overflow-hidden max-h-[calc(100dvh-4.5rem)] overflow-y-contain px-4 `}
+                className={`h-[calc(100dvh-4.5rem)] overflow-hidden max-h-[calc(100dvh-4.5rem)] overflow-y-contain`}
               >
                 {children}
               </main>
@@ -99,7 +97,6 @@ export default async function RootLayout({
             </AppProvider>
           </Web3Provider>
         </NextIntlClientProvider>
-        <PrelineScript />
       </body>
     </html>
   );

@@ -1,5 +1,3 @@
-import { unstable_setRequestLocale } from "next-intl/server";
-
 import { Login } from "@/app/views/Login";
 
 interface IndexParams {
@@ -11,7 +9,7 @@ export default function IndexPage({
 }: {
   params: IndexParams;
 }) {
-  unstable_setRequestLocale(locale);
+  // unstable_setRequestLocale(locale);
 
   return <Login />;
 }

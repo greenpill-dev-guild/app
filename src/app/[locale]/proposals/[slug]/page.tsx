@@ -9,5 +9,5 @@ export default function ProposalPage({
 }: {
   params: { slug: string; locale: string };
 }) {
-  return <ProposalView params={params} />;
+  return <ProposalView id={params.slug} />;
 }
