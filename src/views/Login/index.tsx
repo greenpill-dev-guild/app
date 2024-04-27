@@ -7,7 +7,7 @@ import React, { useState, useEffect } from "react";
 
 import { getSupabaseClient } from "@/modules/supabase";
 
-import { Splash } from "@/app/components/Splash";
+import { Splash } from "@/components/Splash";
 
 const supabaseAuth = async (address: string, userId: string) => {
   await fetch("/api/auth/login", {

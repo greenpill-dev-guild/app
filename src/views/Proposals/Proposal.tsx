@@ -6,9 +6,9 @@ import React, { useState, useEffect } from "react";
 
 import { getSupabaseClient } from "@/modules/supabase";
 
-import { useApp } from "@/app/providers/AppProvider";
+import { useApp } from "@/providers/AppProvider";
 
-import { ProposalViewer } from "@/app/components/Proposal/Viewer";
+import { ProposalViewer } from "@/components/Proposal/Viewer";
 
 interface ProposalViewProps {
   id: string;

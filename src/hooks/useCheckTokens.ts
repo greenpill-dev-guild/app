@@ -6,7 +6,7 @@ import {
   verifyAccessToken,
   verifyRefreshToken,
   generateAccessToken,
-} from "../../modules/auth";
+} from "@/modules/auth";
 
 export default function useCheckTokens() {
   const [isAccessTokenValid, setIsAccessTokenValid] = useState<boolean>(true);

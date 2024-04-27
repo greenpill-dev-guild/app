@@ -11,7 +11,7 @@ import {
 import React from "react";
 import Link from "next/link";
 
-import { formatPrice } from "@/app/utils/text";
+import { formatPrice } from "@/utils/text";
 
 type ProfileTab = "proposal" | "details" | "milestones";
 

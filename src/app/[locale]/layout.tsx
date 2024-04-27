@@ -7,10 +7,10 @@ import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
 
-import { Web3Provider } from "@/app/providers/Web3Provider";
-import { AppProvider } from "@/app/providers/AppProvider";
+import { Web3Provider } from "@/providers/Web3Provider";
+import { AppProvider } from "@/providers/AppProvider";
 
-import { Navbar } from "@/app/components/Navbar";
+import { Navbar } from "@/components/Navbar";
 
 const APP_NAME = "Impact Voice";
 const APP_DEFAULT_TITLE = "Impact Voice App";

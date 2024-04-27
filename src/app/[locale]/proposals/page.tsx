@@ -1,6 +1,6 @@
 import { unstable_setRequestLocale } from "next-intl/server";
 
-import { ProposalsView } from "@/app/views/Proposals";
+import { ProposalsView } from "@/views/Proposals";
 
 interface ProposalParams {
   locale: string;

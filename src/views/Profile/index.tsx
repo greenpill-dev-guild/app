@@ -2,6 +2,7 @@
 
 import React from "react";
 import * as yup from "yup";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { usePrivy } from "@privy-io/react-auth";
@@ -11,13 +12,12 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
 import { getSupabaseClient, logoutSupabase } from "@/modules/supabase";
 
-import { useApp } from "@/app/providers/AppProvider";
-import useCheckTokens from "@/app/hooks/useCheckTokens";
+import { useApp } from "@/providers/AppProvider";
+import useCheckTokens from "@/hooks/useCheckTokens";
 
-import { Button } from "@/app/components/Button";
-import { FormInput } from "@/app/components/Form/Input";
-import { shortenAddress } from "@/app/utils/text";
-import Image from "next/image";
+import { Button } from "@/components/Button";
+import { FormInput } from "@/components/Form/Input";
+import { shortenAddress } from "@/utils/text";
 
 interface ProfileFormValues {
   location?: string;

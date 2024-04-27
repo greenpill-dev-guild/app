@@ -7,11 +7,11 @@ import { usePrivy } from "@privy-io/react-auth";
 
 import { getSupabaseClient, logoutSupabase } from "@/modules/supabase";
 
-import { useApp } from "@/app/providers/AppProvider";
+import { useApp } from "@/providers/AppProvider";
 
-import useCheckTokens from "@/app/hooks/useCheckTokens";
+import useCheckTokens from "@/hooks/useCheckTokens";
 
-import { ProposalList } from "@/app/components/Proposal/List";
+import { ProposalList } from "@/components/Proposal/List";
 
 interface ProposalViewProps {}
 

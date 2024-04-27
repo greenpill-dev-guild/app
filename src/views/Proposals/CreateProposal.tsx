@@ -15,17 +15,17 @@ import React, { useState, useEffect, useRef } from "react";
 
 import { getSupabaseClient, logoutSupabase } from "@/modules/supabase";
 
-import { useApp } from "@/app/providers/AppProvider";
-import useCheckTokens from "@/app/hooks/useCheckTokens";
+import { useApp } from "@/providers/AppProvider";
+import useCheckTokens from "@/hooks/useCheckTokens";
 
-import { Loader } from "@/app/components/Loader";
-import { Button } from "@/app/components/Button";
-import { FormInfo } from "@/app/components/Form/Info";
-import { FormText } from "@/app/components/Form/Text";
-import { FormInput } from "@/app/components/Form/Input";
-import { FormSelect } from "@/app/components/Form/Select";
-import { FormProgress } from "@/app/components/Form/Progress";
-import { MilestoneList } from "@/app/components/Milestone/List";
+import { Loader } from "@/components/Loader";
+import { Button } from "@/components/Button";
+import { FormInfo } from "@/components/Form/Info";
+import { FormText } from "@/components/Form/Text";
+import { FormInput } from "@/components/Form/Input";
+import { FormSelect } from "@/components/Form/Select";
+import { FormProgress } from "@/components/Form/Progress";
+import { MilestoneList } from "@/components/Milestone/List";
 
 type Step = 1 | 2 | 3 | 4;
 

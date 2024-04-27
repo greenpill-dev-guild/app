@@ -5,7 +5,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 
 import { getSupabaseClient } from "@/modules/supabase";
 
-import useCheckTokens from "@/app/hooks/useCheckTokens";
+import useCheckTokens from "@/hooks/useCheckTokens";
 
 export const AppContext = createContext({
   user: null as TUser | null,

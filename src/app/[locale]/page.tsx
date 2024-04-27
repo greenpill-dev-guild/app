@@ -1,4 +1,4 @@
-import { Login } from "@/app/views/Login";
+import { Login } from "@/views/Login";
 
 interface IndexParams {
   locale: string;

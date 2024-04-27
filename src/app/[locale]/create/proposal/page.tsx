@@ -1,6 +1,6 @@
 "use client";
 
-import { CreateProposalView } from "@/app/views/Proposals/CreateProposal";
+import { CreateProposalView } from "@/views/Proposals/CreateProposal";
 
 export default function CreateProposalPage() {
   return <CreateProposalView />;
