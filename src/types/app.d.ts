@@ -1,4 +1,4 @@
-export type TCreateProposal = {
+declare type TCreateProposal = {
   name: string;
   location: string;
   problem: string;
@@ -12,7 +12,7 @@ export type TCreateProposal = {
   milestones: TMilestone[];
 };
 
-export type TSummaryProposal = {
+declare type TSummaryProposal = {
   id: string;
   name: string;
   location: string;
@@ -20,34 +20,34 @@ export type TSummaryProposal = {
   start_date: Date;
   end_date: Date;
   banner_image: string;
-  votes: TVote[];
+  votes: TVote[] | null;
 };
 
-export type TFullProposal = TSummaryProposal & {
-  author_id: string | null;
+declare type TFullProposal = TSummaryProposal & {
+  author_id: string;
   solution: string;
   budget: number;
   community?: string | null;
-  collaboraxtors: TCollaborator[] | null;
+  collaborators: TCollaborator[] | null;
   milestones: TMilestone[];
 };
 
-type TCollaborator = {
+declare type TCollaborator = {
   id: string | null;
-  username: string | null;
-  // profile_image: string | null;
-  created_at: Date;
+  username?: string | null;
+  user_id: string | null;
+  profile_image?: string | null;
 };
 
-export type TMilestone = {
-  // id: string;
+declare type TMilestone = {
+  id?: string;
   name: string;
   budget: number;
   description: string;
   // created_at: Date;
 };
 
-export type TUser = {
+declare type TUser = {
   id: string;
   username: string;
   address: string | null;
@@ -59,7 +59,7 @@ export type TUser = {
   created_at?: Date;
 };
 
-export type TVote = {
+declare type TVote = {
   id: string;
   proposal_id: string;
   user_id: string;
